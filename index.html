@@ -1,0 +1,2662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <title>AUNTY KI RASOI — Home Cooked Indian Food</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet" />
+    <style>
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        :root{
+            --bg-primary:#120e0a;--bg-secondary:#1a1410;--bg-card:#231d18;--bg-card-hover:#2d2520;
+            --gold:#c9a84c;--gold-light:#e8d48b;--gold-dark:#a8892e;
+            --text-primary:#f5ede4;--text-secondary:#c5b8ab;--text-muted:#8f7e6e;
+            --border-subtle:rgba(201,168,76,0.15);
+            --radius:16px;--radius-sm:10px;--radius-xs:6px;
+            --font-serif:'Playfair Display',Georgia,serif;
+            --font-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+            --header-h:68px;--safe-bottom:env(safe-area-inset-bottom,0px);
+        }
+        html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+        body{font-family:var(--font-sans);background:var(--bg-primary);color:var(--text-primary);line-height:1.5;overflow-x:hidden;padding-top:var(--header-h);padding-bottom:calc(80px + var(--safe-bottom));-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+        img{display:block;max-width:100%;height:auto}
+        a{color:inherit;text-decoration:none}
+        button{font:inherit;cursor:pointer;border:none;background:none;color:inherit;touch-action:manipulation}
+        input,select,textarea{font:inherit;color:inherit;background:none;border:none;outline:none}
+        ::-webkit-scrollbar{width:4px;height:4px}
+        ::-webkit-scrollbar-track{background:var(--bg-secondary)}
+        ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:4px}
+
+        .container{max-width:480px;margin:0 auto;padding:0 16px}
+        .container-wide{max-width:720px;margin:0 auto;padding:0 16px}
+        .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+        .flex{display:flex}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-between{justify-content:space-between}
+        .gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}.gap-6{gap:24px}.text-center{text-align:center}.w-full{width:100%}.relative{position:relative}
+        .gold-text{color:var(--gold)}.gold-border{border-color:var(--gold)}.gold-bg{background:var(--gold);color:#120e0a}
+
+        .badge-gold{display:inline-block;background:var(--gold);color:#120e0a;font-size:10px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;padding:2px 10px;border-radius:20px;font-family:var(--font-sans)}
+        .badge-bestseller{background:#c9a84c;color:#120e0a;font-size:9px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;padding:2px 10px;border-radius:20px;font-family:var(--font-sans)}
+        .badge-veg{background:#2d8a4e;color:#fff;font-size:9px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;padding:2px 10px;border-radius:20px;font-family:var(--font-sans)}
+        .badge-nonveg{background:#b33a3a;color:#fff;font-size:9px;font-weight:700;letter-spacing:0.3px;text-transform:uppercase;padding:2px 10px;border-radius:20px;font-family:var(--font-sans)}
+        .badge-unavailable{background:rgba(255,255,255,0.08);color:var(--text-muted);font-size:9px;font-weight:600;letter-spacing:0.3px;text-transform:uppercase;padding:2px 10px;border-radius:20px;font-family:var(--font-sans)}
+
+        .header{position:fixed;top:0;left:0;right:0;z-index:1000;height:var(--header-h);background:rgba(18,14,10,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,0.12);display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+        .header-brand{display:flex;align-items:center;gap:10px;flex-shrink:0;cursor:pointer}
+        .header-brand .logo-icon{font-size:28px;line-height:1}
+        .header-brand .logo-text{font-family:var(--font-serif);font-weight:700;font-size:18px;letter-spacing:0.5px;color:var(--text-primary)}
+        .header-brand .logo-text span{color:var(--gold)}
+        .header-brand .logo-sub{font-size:9px;font-weight:400;color:var(--text-muted);letter-spacing:0.8px;text-transform:uppercase;display:block;margin-top:-2px}
+        .header-actions{display:flex;align-items:center;gap:6px;flex-shrink:0}
+        .header-actions .lang-toggle{display:flex;gap:2px;background:rgba(255,255,255,0.06);border-radius:20px;padding:3px;border:1px solid rgba(201,168,76,0.12)}
+        .header-actions .lang-toggle button{font-size:11px;font-weight:600;padding:4px 10px;border-radius:16px;transition:all 0.2s;color:var(--text-muted);letter-spacing:0.3px}
+        .header-actions .lang-toggle button.active{background:var(--gold);color:#120e0a}
+        .header-actions .lang-toggle button:hover:not(.active){color:var(--text-primary)}
+        .header-actions .search-toggle{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.08);transition:all 0.2s;font-size:18px}
+        .header-actions .search-toggle:hover{background:rgba(201,168,76,0.12)}
+
+        .search-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:2000;background:rgba(18,14,10,0.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);padding:20px 16px;display:none;flex-direction:column;align-items:center;animation:fadeIn 0.25s ease}
+        .search-overlay.open{display:flex}
+        .search-overlay .search-close{align-self:flex-end;font-size:28px;color:var(--text-muted);padding:8px;margin-bottom:8px}
+        .search-overlay .search-input-wrap{width:100%;max-width:480px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.06);border-radius:12px;padding:0 16px;border:1px solid rgba(201,168,76,0.15)}
+        .search-overlay .search-input-wrap input{flex:1;height:56px;font-size:18px;background:transparent;color:var(--text-primary);padding:0}
+        .search-overlay .search-input-wrap input::placeholder{color:var(--text-muted)}
+        .search-overlay .search-input-wrap .search-icon{font-size:20px;color:var(--text-muted)}
+        .search-overlay .search-results{width:100%;max-width:480px;margin-top:16px;overflow-y:auto;flex:1;padding-bottom:40px}
+        .search-overlay .search-results .result-item{display:flex;align-items:center;gap:14px;padding:12px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);margin-bottom:6px;cursor:pointer;transition:background 0.15s}
+        .search-overlay .search-results .result-item:hover{background:rgba(201,168,76,0.08)}
+        .search-overlay .search-results .result-item .ri-img{width:48px;height:48px;border-radius:var(--radius-xs);object-fit:cover;background:var(--bg-secondary);flex-shrink:0}
+        .search-overlay .search-results .result-item .ri-info{flex:1;min-width:0}
+        .search-overlay .search-results .result-item .ri-info .ri-name{font-weight:600;font-size:15px;color:var(--text-primary)}
+        .search-overlay .search-results .result-item .ri-info .ri-section{font-size:12px;color:var(--text-muted)}
+        .search-overlay .search-results .result-item .ri-price{font-weight:600;font-size:14px;color:var(--gold);flex-shrink:0}
+        .search-overlay .search-results .empty-state{text-align:center;color:var(--text-muted);padding:40px 0;font-size:15px}
+
+        .hero{padding:24px 0 20px;text-align:center;position:relative;overflow:hidden}
+        .hero::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:60%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0.3}
+        .hero .hero-badge{display:inline-block;background:rgba(201,168,76,0.10);border:1px solid rgba(201,168,76,0.15);border-radius:30px;padding:4px 16px;font-size:11px;font-weight:500;color:var(--gold-light);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px}
+        .hero h1{font-family:var(--font-serif);font-size:42px;font-weight:700;line-height:1.1;letter-spacing:-0.5px;margin-bottom:4px}
+        .hero h1 .gold-text{font-style:italic}
+        .hero .hero-tagline{font-size:15px;color:var(--text-secondary);font-weight:400;letter-spacing:0.5px;margin-bottom:6px}
+        .hero .hero-desc{font-size:13px;color:var(--text-muted);max-width:320px;margin:0 auto 10px;font-weight:300}
+        .hero .hero-divider{display:flex;align-items:center;justify-content:center;gap:12px;margin:10px auto}
+        .hero .hero-divider .line{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+        .hero .hero-divider .line:last-child{background:linear-gradient(90deg,var(--gold),transparent)}
+        .hero .hero-divider .diamond{color:var(--gold);font-size:10px;opacity:0.6}
+        .hero .hero-cta{display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:10px 28px;background:var(--gold);color:#120e0a;font-weight:600;font-size:14px;border-radius:30px;transition:all 0.25s;border:1px solid var(--gold)}
+        .hero .hero-cta:hover{background:var(--gold-light);border-color:var(--gold-light);transform:scale(1.02)}
+
+        .section-nav{position:sticky;top:var(--header-h);z-index:100;background:rgba(18,14,10,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);padding:10px 0 8px;border-bottom:1px solid rgba(201,168,76,0.06);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+        .section-nav::-webkit-scrollbar{display:none}
+        .section-nav .nav-scroll{display:flex;gap:4px;padding:0 16px;min-width:max-content}
+        .section-nav .nav-scroll button{padding:8px 18px;border-radius:30px;font-size:13px;font-weight:500;color:var(--text-muted);transition:all 0.2s;white-space:nowrap;border:1px solid transparent;letter-spacing:0.3px}
+        .section-nav .nav-scroll button:hover{color:var(--text-primary)}
+        .section-nav .nav-scroll button.active{background:var(--gold);color:#120e0a;font-weight:600;border-color:var(--gold)}
+        .section-nav .nav-scroll button .nav-icon{margin-right:6px}
+
+        .filter-bar{display:flex;gap:6px;padding:10px 16px 6px;flex-wrap:wrap;align-items:center;border-bottom:1px solid rgba(201,168,76,0.05)}
+        .filter-bar .filter-label{font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.5px;text-transform:uppercase;margin-right:4px}
+        .filter-bar .filter-btn{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:500;color:var(--text-muted);border:1px solid rgba(255,255,255,0.06);transition:all 0.2s;background:rgba(255,255,255,0.03)}
+        .filter-bar .filter-btn:hover{color:var(--text-primary);border-color:rgba(201,168,76,0.2)}
+        .filter-bar .filter-btn.active{background:var(--gold);color:#120e0a;border-color:var(--gold)}
+        .filter-bar .filter-btn .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
+        .filter-bar .filter-btn .dot.green{background:#2d8a4e}
+        .filter-bar .filter-btn .dot.red{background:#b33a3a}
+        .filter-bar .filter-btn .dot.blue{background:#4a90d9}
+        .filter-bar .filter-clear{margin-left:auto;font-size:12px;color:var(--text-muted);padding:5px 10px;border-radius:16px;border:1px solid transparent;transition:all 0.2s}
+        .filter-bar .filter-clear:hover{color:var(--text-primary);border-color:rgba(255,255,255,0.06)}
+
+        .menu-section{padding:16px 0 4px}
+        .menu-section .section-header{display:flex;align-items:baseline;justify-content:space-between;padding:0 16px 10px;border-bottom:1px solid rgba(201,168,76,0.06)}
+        .menu-section .section-header h2{font-family:var(--font-serif);font-size:24px;font-weight:600;letter-spacing:0.3px;color:var(--text-primary)}
+        .menu-section .section-header h2 .gold-text{font-weight:700}
+        .menu-section .section-header .section-count{font-size:13px;color:var(--text-muted);font-weight:400}
+        .menu-grid{display:grid;grid-template-columns:1fr;gap:12px;padding:12px 16px 20px}
+
+        .menu-card{display:flex;gap:14px;background:var(--bg-card);border-radius:var(--radius);padding:12px 14px;border:1px solid rgba(201,168,76,0.06);transition:all 0.2s;cursor:pointer;position:relative;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.3)}
+        .menu-card:hover{background:var(--bg-card-hover);border-color:rgba(201,168,76,0.15);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+        .menu-card:active{transform:scale(0.98)}
+        .menu-card .card-img{width:88px;height:88px;border-radius:var(--radius-sm);object-fit:cover;background:var(--bg-secondary);flex-shrink:0;border:1px solid rgba(201,168,76,0.06)}
+        .menu-card .card-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:space-between}
+        .menu-card .card-body .card-top{display:flex;flex-wrap:wrap;align-items:flex-start;gap:4px 8px}
+        .menu-card .card-body .card-top .card-name{font-weight:600;font-size:15px;color:var(--text-primary);line-height:1.3;flex:1;min-width:0}
+        .menu-card .card-body .card-top .card-badges{display:flex;gap:4px;flex-wrap:wrap;flex-shrink:0}
+        .menu-card .card-body .card-desc{font-size:13px;color:var(--text-secondary);line-height:1.4;margin-top:2px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+        .menu-card .card-body .card-bottom{display:flex;align-items:center;justify-content:space-between;margin-top:6px;flex-wrap:wrap;gap:4px 8px}
+        .menu-card .card-body .card-bottom .card-price{font-weight:700;font-size:15px;color:var(--gold);letter-spacing:0.3px;display:flex;align-items:center;gap:4px}
+        .menu-card .card-body .card-bottom .card-price .rupee-symbol{font-weight:400;font-size:13px}
+        .menu-card .card-body .card-bottom .card-price .price-label{font-weight:400;font-size:11px;color:var(--text-muted);margin-right:2px}
+        .menu-card .card-body .card-bottom .card-price .price-variant{font-weight:400;font-size:12px;color:var(--text-muted)}
+        .menu-card .card-body .card-bottom .card-extra{display:flex;align-items:center;gap:6px}
+        .menu-card .card-body .card-bottom .card-extra .veg-indicator{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+        .menu-card .card-body .card-bottom .card-extra .veg-indicator.green{background:#2d8a4e;border:1px solid rgba(45,138,78,0.3)}
+        .menu-card .card-body .card-bottom .card-extra .veg-indicator.red{background:#b33a3a;border:1px solid rgba(179,58,58,0.3)}
+        .menu-card .card-body .card-bottom .card-extra .featured-star{color:var(--gold);font-size:14px}
+        .menu-card .card-body .card-bottom .card-extra .availability{font-size:10px;font-weight:500;color:var(--text-muted);padding:2px 8px;border-radius:12px;background:rgba(255,255,255,0.04)}
+        .menu-card .card-body .card-bottom .card-extra .availability.available{color:#4caf50}
+        .menu-card .card-body .card-bottom .card-extra .availability.unavailable{color:var(--text-muted)}
+
+        .modal-overlay{position:fixed;inset:0;z-index:3000;background:rgba(18,14,10,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:none;align-items:center;justify-content:center;padding:20px;animation:fadeIn 0.25s ease}
+        .modal-overlay.open{display:flex}
+        .modal-overlay .modal{background:var(--bg-secondary);border-radius:var(--radius);max-width:440px;width:100%;max-height:90vh;overflow-y:auto;padding:0;border:1px solid rgba(201,168,76,0.10);box-shadow:0 24px 64px rgba(0,0,0,0.7);animation:slideUp 0.3s ease}
+        .modal-overlay .modal .modal-img{width:100%;height:200px;object-fit:cover;border-radius:var(--radius) var(--radius) 0 0;background:var(--bg-primary)}
+        .modal-overlay .modal .modal-body{padding:20px 20px 24px}
+        .modal-overlay .modal .modal-body .modal-close{float:right;font-size:24px;color:var(--text-muted);padding:4px 8px;margin:-6px -6px 0 0;transition:color 0.2s}
+        .modal-overlay .modal .modal-body .modal-close:hover{color:var(--text-primary)}
+        .modal-overlay .modal .modal-body .modal-name{font-family:var(--font-serif);font-size:26px;font-weight:700;color:var(--text-primary);line-height:1.2;margin-bottom:2px;padding-right:36px}
+        .modal-overlay .modal .modal-body .modal-name-hi{font-size:16px;color:var(--text-muted);font-weight:400;margin-bottom:6px}
+        .modal-overlay .modal .modal-body .modal-meta{display:flex;flex-wrap:wrap;gap:4px 8px;margin-bottom:10px}
+        .modal-overlay .modal .modal-body .modal-desc{font-size:14px;color:var(--text-secondary);line-height:1.6;margin-bottom:12px}
+        .modal-overlay .modal .modal-body .modal-desc-hi{font-size:14px;color:var(--text-muted);line-height:1.6;margin-bottom:12px;font-style:italic}
+        .modal-overlay .modal .modal-body .modal-pricing{background:rgba(255,255,255,0.03);border-radius:var(--radius-sm);padding:12px 16px;border:1px solid rgba(201,168,76,0.06);margin-bottom:12px}
+        .modal-overlay .modal .modal-body .modal-pricing .price-row{display:flex;justify-content:space-between;padding:4px 0;font-size:15px}
+        .modal-overlay .modal .modal-body .modal-pricing .price-row .pr-label{color:var(--text-secondary)}
+        .modal-overlay .modal .modal-body .modal-pricing .price-row .pr-value{font-weight:600;color:var(--gold);display:flex;align-items:center;gap:4px}
+        .modal-overlay .modal .modal-body .modal-footer-info{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.04);font-size:13px;color:var(--text-muted)}
+        .modal-overlay .modal .modal-body .modal-footer-info span{display:flex;align-items:center;gap:4px}
+
+        .restaurant-info{padding:24px 16px 16px;border-top:1px solid rgba(201,168,76,0.08);margin-top:8px}
+        .restaurant-info .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;max-width:480px;margin:0 auto}
+        .restaurant-info .info-grid .info-item{display:flex;align-items:center;gap:10px;padding:10px 12px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid rgba(201,168,76,0.04);transition:background 0.2s;font-size:13px;color:var(--text-secondary)}
+        .restaurant-info .info-grid .info-item:hover{background:rgba(255,255,255,0.04)}
+        .restaurant-info .info-grid .info-item .info-icon{font-size:18px;width:28px;text-align:center;flex-shrink:0}
+        .restaurant-info .info-grid .info-item .info-label{font-weight:500;color:var(--text-primary)}
+        .restaurant-info .info-grid .info-item .info-value{color:var(--text-secondary);word-break:break-word}
+        .restaurant-info .info-grid .info-item .info-value a{color:var(--gold)}
+        .restaurant-info .info-grid .info-item .info-value a:hover{text-decoration:underline}
+        .restaurant-info .info-full{grid-column:1 / -1}
+
+        .social-links{display:flex;gap:10px;justify-content:center;padding:16px 0 8px;flex-wrap:wrap}
+        .social-links a{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.04);border:1px solid rgba(201,168,76,0.06);font-size:20px;transition:all 0.2s;color:var(--text-secondary)}
+        .social-links a:hover{background:rgba(201,168,76,0.10);border-color:rgba(201,168,76,0.2);color:var(--gold);transform:translateY(-2px)}
+        .social-links a.link-placeholder{opacity:0.4;cursor:not-allowed}
+        .social-links a.link-placeholder:hover{background:rgba(255,255,255,0.04);border-color:rgba(201,168,76,0.06);color:var(--text-secondary);transform:none}
+        .social-links a .social-label{display:none}
+
+        .qr-section{padding:20px 16px 16px;text-align:center;border-top:1px solid rgba(201,168,76,0.06)}
+        .qr-section .qr-wrap{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,0.02);padding:10px 20px 10px 16px;border-radius:var(--radius-sm);border:1px solid rgba(201,168,76,0.06)}
+        .qr-section .qr-wrap .qr-code{font-size:44px;line-height:1}
+        .qr-section .qr-wrap .qr-code img{width:60px;height:60px;border-radius:8px}
+        .qr-section .qr-wrap .qr-text{text-align:left}
+        .qr-section .qr-wrap .qr-text .qr-title{font-weight:600;font-size:13px;color:var(--text-primary)}
+        .qr-section .qr-wrap .qr-text .qr-sub{font-size:12px;color:var(--text-muted)}
+
+        .float-buttons{position:fixed;bottom:calc(24px + var(--safe-bottom));right:20px;z-index:900;display:flex;flex-direction:column;gap:10px;align-items:flex-end}
+        .float-buttons .float-btn{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--gold);color:#120e0a;font-size:24px;box-shadow:0 4px 20px rgba(201,168,76,0.3);transition:all 0.25s;border:none}
+        .float-buttons .float-btn:hover{transform:scale(1.05);box-shadow:0 6px 28px rgba(201,168,76,0.4)}
+        .float-buttons .float-btn:active{transform:scale(0.92)}
+        .float-buttons .float-btn.secondary{background:rgba(255,255,255,0.06);color:var(--text-secondary);box-shadow:0 4px 16px rgba(0,0,0,0.4);font-size:20px;border:1px solid rgba(201,168,76,0.06)}
+        .float-buttons .float-btn.secondary:hover{background:rgba(255,255,255,0.10);color:var(--text-primary)}
+
+        .scroll-top{position:fixed;bottom:calc(90px + var(--safe-bottom));right:20px;z-index:899;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.10);color:var(--text-secondary);font-size:18px;display:none;align-items:center;justify-content:center;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all 0.25s}
+        .scroll-top.visible{display:flex}
+        .scroll-top:hover{background:rgba(201,168,76,0.12);color:var(--gold)}
+
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        @keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(0.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+        .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.5s ease,transform 0.5s ease}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+
+        @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+        @media (min-width:480px){.container{max-width:560px}.menu-grid{grid-template-columns:1fr 1fr}.menu-card .card-img{width:100px;height:100px}}
+        @media (min-width:768px){:root{--header-h:76px}.container{max-width:720px}.container-wide{max-width:900px}.hero h1{font-size:52px}.menu-grid{grid-template-columns:1fr 1fr;gap:16px}.modal-overlay .modal{max-width:500px}.modal-overlay .modal .modal-img{height:240px}.restaurant-info .info-grid{grid-template-columns:1fr 1fr 1fr}.float-buttons .float-btn{width:58px;height:58px;font-size:26px}}
+        @media (min-width:1024px){.container{max-width:960px}.container-wide{max-width:1100px}.menu-grid{grid-template-columns:1fr 1fr 1fr}.hero h1{font-size:62px}.hero .hero-desc{max-width:400px}}
+        @media (min-width:1440px){.container{max-width:1200px}.container-wide{max-width:1300px}.menu-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+        @media (max-width:380px){.header-brand .logo-text{font-size:15px}.header-actions .lang-toggle button{font-size:10px;padding:3px 8px}.hero h1{font-size:32px}.menu-card .card-img{width:72px;height:72px}.menu-card .card-body .card-top .card-name{font-size:13px}.modal-overlay .modal .modal-body .modal-name{font-size:21px}}
+        @media print{.header,.section-nav,.filter-bar,.float-buttons,.scroll-top,.search-overlay,.modal-overlay{display:none!important}body{padding-top:0;background:#fff;color:#000}.menu-card{border:1px solid #ddd;background:#fafafa}.gold-text{color:#b8860b}}
+
+        /* ============================================================
+           ADMIN LOGIN OVERLAY
+           ============================================================ */
+        .admin-login-overlay{position:fixed;inset:0;z-index:9999;background:rgba(18,14,10,0.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);display:none;justify-content:center;align-items:center;padding:20px}
+        .admin-login-overlay.open{display:flex}
+        .admin-login-box{background:#1a1410;border-radius:var(--radius);max-width:400px;width:100%;padding:32px 28px;border:1px solid rgba(201,168,76,0.15);box-shadow:0 24px 64px rgba(0,0,0,0.7);animation:slideUp 0.3s ease}
+        .admin-login-box .close-login{float:right;background:none;border:none;color:var(--text-muted);font-size:24px;cursor:pointer;margin-top:-8px}
+        .admin-login-box .close-login:hover{color:var(--text-primary)}
+        .admin-login-box h2{font-family:var(--font-serif);font-size:28px;color:var(--gold);margin-bottom:8px;text-align:center}
+        .admin-login-box p{color:var(--text-muted);text-align:center;margin-bottom:24px;font-size:14px}
+        .admin-login-box input{width:100%;padding:12px 16px;margin-bottom:12px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-sm);color:var(--text-primary);font-size:16px}
+        .admin-login-box input:focus{border-color:var(--gold);outline:none}
+        .admin-login-box .login-btn{width:100%;padding:12px;background:var(--gold);border:none;border-radius:var(--radius-sm);color:#120e0a;font-weight:600;font-size:16px;cursor:pointer;transition:background 0.2s}
+        .admin-login-box .login-btn:hover{background:var(--gold-light)}
+        .admin-login-box .login-error{color:#b33a3a;font-size:14px;margin-top:8px;text-align:center}
+        .password-field-wrapper{position:relative;width:100%}
+        .password-field-wrapper input{width:100%;padding-right:44px}
+        .password-field-wrapper .toggle-btn{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--text-muted);cursor:pointer;padding:4px;font-size:18px;line-height:1;z-index:1;pointer-events:auto}
+        .password-field-wrapper .toggle-btn:hover{color:var(--text-primary)}
+
+        /* ============================================================
+           ADMIN DASHBOARD
+           ============================================================ */
+        .admin-dashboard{display:none;position:fixed;inset:0;z-index:9998;background:var(--bg-primary);overflow-y:auto;padding:20px}
+        .admin-dashboard.open{display:block}
+        .admin-dashboard .admin-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid rgba(201,168,76,0.1);margin-bottom:20px;flex-wrap:wrap;gap:10px}
+        .admin-dashboard .admin-header h1{font-family:var(--font-serif);font-size:24px;color:var(--gold)}
+        .admin-dashboard .admin-header .admin-actions{display:flex;gap:10px;flex-wrap:wrap}
+        .admin-dashboard .admin-header .admin-actions button{padding:6px 16px;border-radius:20px;background:rgba(255,255,255,0.06);border:1px solid rgba(201,168,76,0.08);color:var(--text-secondary);cursor:pointer;transition:all 0.2s}
+        .admin-dashboard .admin-header .admin-actions button:hover{background:rgba(201,168,76,0.12);color:var(--text-primary)}
+        .admin-dashboard .admin-header .admin-actions .logout-btn{background:rgba(179,58,58,0.15);border-color:rgba(179,58,58,0.2);color:#b33a3a}
+        .admin-dashboard .admin-header .admin-actions .logout-btn:hover{background:rgba(179,58,58,0.25)}
+
+        .admin-dashboard .admin-nav{display:flex;gap:4px;padding-bottom:16px;border-bottom:1px solid rgba(201,168,76,0.06);margin-bottom:20px;overflow-x:auto}
+        .admin-dashboard .admin-nav button{padding:8px 20px;border-radius:20px;background:transparent;color:var(--text-muted);border:1px solid transparent;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+        .admin-dashboard .admin-nav button:hover{color:var(--text-primary)}
+        .admin-dashboard .admin-nav button.active{background:var(--gold);color:#120e0a;border-color:var(--gold)}
+
+        .admin-dashboard .admin-view{display:none}
+        .admin-dashboard .admin-view.active{display:block}
+
+        .admin-dashboard .form-group{margin-bottom:16px}
+        .admin-dashboard .form-group label{display:block;font-size:14px;font-weight:500;color:var(--text-secondary);margin-bottom:4px}
+        .admin-dashboard .form-group input,.admin-dashboard .form-group textarea,.admin-dashboard .form-group select{width:100%;padding:10px 14px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:8px;color:var(--text-primary);font-size:15px}
+        .admin-dashboard .form-group input:focus,.admin-dashboard .form-group textarea:focus,.admin-dashboard .form-group select:focus{border-color:var(--gold);outline:none}
+        .admin-dashboard .form-group textarea{min-height:60px;resize:vertical}
+        .admin-dashboard .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+        .admin-dashboard .btn{padding:8px 20px;border:none;border-radius:8px;font-weight:600;cursor:pointer;transition:all 0.2s}
+        .admin-dashboard .btn-primary{background:var(--gold);color:#120e0a}
+        .admin-dashboard .btn-primary:hover{background:var(--gold-light)}
+        .admin-dashboard .btn-danger{background:#b33a3a;color:#fff}
+        .admin-dashboard .btn-danger:hover{background:#d44a4a}
+        .admin-dashboard .btn-secondary{background:rgba(255,255,255,0.06);color:var(--text-secondary)}
+        .admin-dashboard .btn-secondary:hover{background:rgba(255,255,255,0.12)}
+
+        .admin-dashboard .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-top:16px}
+        .admin-dashboard .card-item{background:var(--bg-card);border:1px solid rgba(201,168,76,0.06);border-radius:var(--radius-sm);padding:16px;transition:all 0.2s}
+        .admin-dashboard .card-item:hover{border-color:rgba(201,168,76,0.15);background:var(--bg-card-hover)}
+        .admin-dashboard .card-item .item-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+        .admin-dashboard .card-item .item-title{font-weight:600;font-size:16px}
+        .admin-dashboard .card-item .item-sub{font-size:13px;color:var(--text-muted)}
+        .admin-dashboard .card-item .item-actions{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+        .admin-dashboard .card-item .item-actions button{padding:4px 12px;border-radius:16px;font-size:12px;border:1px solid rgba(201,168,76,0.08);background:rgba(255,255,255,0.04);color:var(--text-secondary);cursor:pointer;transition:all 0.2s}
+        .admin-dashboard .card-item .item-actions button:hover{background:rgba(201,168,76,0.08)}
+        .admin-dashboard .card-item .item-actions .edit-btn{background:rgba(201,168,76,0.15);color:var(--gold)}
+        .admin-dashboard .card-item .item-actions .delete-btn{background:rgba(179,58,58,0.15);color:#b33a3a}
+
+        .admin-dashboard .stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px;margin-bottom:24px}
+        .admin-dashboard .stat-card{background:var(--bg-card);border-radius:var(--radius-sm);padding:16px;text-align:center;border:1px solid rgba(201,168,76,0.06)}
+        .admin-dashboard .stat-card .stat-number{font-size:28px;font-weight:700;color:var(--gold)}
+        .admin-dashboard .stat-card .stat-label{font-size:13px;color:var(--text-muted)}
+
+        /* ============================================================
+           ADMIN INLINE MODALS
+           ============================================================ */
+        .modal-overlay-inline{position:fixed;inset:0;background:rgba(18,14,10,0.85);backdrop-filter:blur(4px);display:none;justify-content:center;align-items:center;z-index:10000;padding:20px}
+        .modal-overlay-inline.open{display:flex}
+        .modal-box-inline{background:var(--bg-secondary);border-radius:var(--radius);max-width:620px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;border:1px solid rgba(201,168,76,0.10);box-shadow:0 16px 48px rgba(0,0,0,0.6)}
+        .modal-box-inline .close-modal{float:right;background:none;border:none;color:var(--text-muted);font-size:24px;cursor:pointer}
+        .modal-box-inline .close-modal:hover{color:var(--text-primary)}
+        .modal-box-inline .image-preview{margin:10px 0;max-width:150px;border-radius:8px;border:1px solid rgba(255,255,255,0.06)}
+        .admin-dashboard .empty-state{text-align:center;color:var(--text-muted);padding:40px 0}
+        .admin-dashboard .mt-16{margin-top:16px}
+        .admin-dashboard .flex{display:flex}
+        .admin-dashboard .gap-8{gap:8px}
+        .admin-dashboard .items-center{align-items:center}
+        .admin-dashboard .toast{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);background:var(--gold);color:#120e0a;padding:10px 24px;border-radius:30px;font-weight:600;z-index:99999;box-shadow:0 4px 20px rgba(0,0,0,0.5);opacity:0;transition:opacity 0.3s ease;pointer-events:none}
+        .admin-dashboard .toast.show{opacity:1}
+
+        /* ---- BEGINNER-FRIENDLY ADMIN FORM STYLES ---- */
+        .admin-form-step{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,0.06)}
+        .admin-form-step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+        .admin-form-step .step-title{font-family:var(--font-serif);font-size:18px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+        .admin-form-step .step-title .step-number{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:var(--gold);color:#120e0a;border-radius:50%;font-size:14px;font-weight:700}
+        .admin-form-step .step-desc{font-size:13px;color:var(--text-muted);margin-bottom:12px}
+
+        .admin-form .rupee-input-wrap{position:relative;display:flex;align-items:center}
+        .admin-form .rupee-input-wrap .rupee-prefix{position:absolute;left:14px;font-size:18px;font-weight:600;color:var(--gold);pointer-events:none}
+        .admin-form .rupee-input-wrap input{padding-left:32px}
+
+        .admin-form .type-selector{display:flex;gap:12px;flex-wrap:wrap}
+        .admin-form .type-selector .type-option{display:flex;align-items:center;gap:8px;padding:10px 18px;background:rgba(255,255,255,0.04);border-radius:30px;border:2px solid transparent;cursor:pointer;transition:all 0.2s}
+        .admin-form .type-selector .type-option:hover{background:rgba(255,255,255,0.08)}
+        .admin-form .type-selector .type-option.active{background:rgba(201,168,76,0.12);border-color:var(--gold)}
+        .admin-form .type-selector .type-option .dot{width:14px;height:14px;border-radius:50%;flex-shrink:0}
+        .admin-form .type-selector .type-option .dot.green{background:#2d8a4e}
+        .admin-form .type-selector .type-option .dot.red{background:#b33a3a}
+        .admin-form .type-selector .type-option .dot.blue{background:#4a90d9}
+
+        .admin-form .pricing-mode-selector{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+        .admin-form .pricing-mode-selector .pm-option{padding:8px 16px;border-radius:20px;background:rgba(255,255,255,0.04);border:2px solid transparent;cursor:pointer;font-size:13px;transition:all 0.2s}
+        .admin-form .pricing-mode-selector .pm-option:hover{background:rgba(255,255,255,0.08)}
+        .admin-form .pricing-mode-selector .pm-option.active{background:rgba(201,168,76,0.12);border-color:var(--gold)}
+
+        .admin-form .pricing-rows .price-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+        .admin-form .pricing-rows .price-row input[type="text"]{flex:1;min-width:80px}
+        .admin-form .pricing-rows .price-row .rupee-input-wrap{flex:1}
+        .admin-form .pricing-rows .price-row .rupee-input-wrap input{width:100%;padding-left:32px}
+        .admin-form .pricing-rows .price-row .remove-btn{color:var(--text-muted);padding:4px 8px;cursor:pointer}
+        .admin-form .pricing-rows .price-row .remove-btn:hover{color:#b33a3a}
+
+        .admin-form .toggle-group{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+        .admin-form .toggle-group .toggle-label{font-size:14px}
+        .admin-form .toggle-group .toggle-switch{position:relative;width:44px;height:24px;background:rgba(255,255,255,0.15);border-radius:12px;cursor:pointer;transition:background 0.25s;flex-shrink:0}
+        .admin-form .toggle-group .toggle-switch.active{background:var(--gold)}
+        .admin-form .toggle-group .toggle-switch .toggle-knob{position:absolute;top:2px;left:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform 0.25s}
+        .admin-form .toggle-group .toggle-switch.active .toggle-knob{transform:translateX(20px)}
+        .admin-form .toggle-group .toggle-helper{font-size:12px;color:var(--text-muted);margin-left:4px}
+
+        .admin-form .image-upload-area{border:2px dashed rgba(201,168,76,0.2);border-radius:var(--radius-sm);padding:30px 20px;text-align:center;cursor:pointer;transition:all 0.25s;background:rgba(255,255,255,0.02)}
+        .admin-form .image-upload-area:hover{border-color:rgba(201,168,76,0.4);background:rgba(255,255,255,0.04)}
+        .admin-form .image-upload-area .upload-icon{font-size:40px;display:block;margin-bottom:8px}
+        .admin-form .image-upload-area .upload-text{color:var(--text-secondary);font-size:14px}
+        .admin-form .image-upload-area .upload-sub{color:var(--text-muted);font-size:12px;margin-top:4px}
+        .admin-form .image-upload-area.has-image{border-color:var(--gold);padding:16px}
+        .admin-form .image-upload-area .preview-wrap{position:relative;display:inline-block}
+        .admin-form .image-upload-area .preview-wrap img{max-width:150px;max-height:150px;border-radius:8px;border:1px solid rgba(255,255,255,0.06)}
+        .admin-form .image-upload-area .preview-actions{display:flex;gap:8px;justify-content:center;margin-top:10px;flex-wrap:wrap}
+
+        .admin-form .section-create-inline{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:8px}
+        .admin-form .section-create-inline input{flex:1;min-width:120px;padding:8px 12px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:6px;color:var(--text-primary);font-size:14px}
+        .admin-form .section-create-inline input:focus{border-color:var(--gold)}
+        .admin-form .section-create-inline .btn-sm{padding:6px 14px;font-size:12px;border-radius:6px}
+
+        .admin-form .form-error{color:#b33a3a;font-size:13px;margin-top:4px;display:none}
+        .admin-form .form-error.visible{display:block}
+
+        .admin-form .save-status{margin-top:12px;padding:10px 16px;border-radius:8px;display:none;font-weight:500}
+        .admin-form .save-status.success{display:block;background:rgba(45,138,78,0.15);color:#4caf50;border:1px solid rgba(45,138,78,0.2)}
+        .admin-form .save-status.error{display:block;background:rgba(179,58,58,0.15);color:#b33a3a;border:1px solid rgba(179,58,58,0.2)}
+        .admin-form .save-status.loading{display:block;background:rgba(201,168,76,0.1);color:var(--gold);border:1px solid rgba(201,168,76,0.1)}
+
+        @media (max-width:600px){
+            .admin-dashboard .form-row{grid-template-columns:1fr}
+            .admin-dashboard .card-grid{grid-template-columns:1fr}
+            .admin-dashboard .admin-header{flex-direction:column;align-items:stretch}
+            .admin-dashboard .admin-nav{gap:2px}
+            .admin-dashboard .admin-nav button{font-size:13px;padding:6px 14px}
+            .modal-box-inline{padding:16px}
+            .admin-form .type-selector .type-option{padding:8px 14px;font-size:14px}
+            .admin-form .pricing-mode-selector .pm-option{padding:6px 12px;font-size:12px}
+            .admin-form .pricing-rows .price-row{flex-wrap:wrap}
+            .admin-form .pricing-rows .price-row .rupee-input-wrap{flex:1 1 100%}
+            .admin-form .section-create-inline{flex-direction:column;align-items:stretch}
+            .admin-form .image-upload-area{padding:20px 16px}
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         CUSTOMER HEADER
+         ============================================================ -->
+    <header class="header" role="banner">
+        <div class="header-brand" id="logoBrand">
+            <span class="logo-icon" aria-hidden="true">🍛</span>
+            <div>
+                <div class="logo-text" id="headerBrandText">AUNTY KI <span>RASOI</span></div>
+                <span class="logo-sub" id="headerTagline">Home Cooked Indian Food</span>
+            </div>
+        </div>
+        <div class="header-actions">
+            <div class="lang-toggle" role="group" aria-label="Language switcher">
+                <button data-lang="en" class="active" aria-pressed="true">🇬🇧 EN</button>
+                <button data-lang="hi" aria-pressed="false">🇮🇳 हिं</button>
+            </div>
+            <button class="search-toggle" aria-label="Search menu" id="searchToggle"><span aria-hidden="true">🔍</span></button>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         SEARCH OVERLAY
+         ============================================================ -->
+    <div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search menu">
+        <button class="search-close" id="searchClose" aria-label="Close search">✕</button>
+        <div class="search-input-wrap">
+            <span class="search-icon" aria-hidden="true">🔍</span>
+            <input type="text" id="searchInput" placeholder="Search dishes..." autocomplete="off" aria-label="Search dishes" />
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero container" aria-label="Restaurant introduction">
+        <div class="hero-badge" id="heroBadge">✦ Premium Indian Cuisine</div>
+        <h1 id="heroTitle">AUNTY KI <span class="gold-text">RASOI</span></h1>
+        <p class="hero-tagline" id="heroTagline">Home Cooked Indian Food</p>
+        <div class="hero-divider"><span class="line"></span><span class="diamond">◆</span><span class="line"></span></div>
+        <p class="hero-desc" id="heroDesc">Authentic flavours from India's heart, crafted with love and tradition.</p>
+        <button class="hero-cta" id="heroExploreBtn"><span id="heroCtaText">Explore Menu</span><span aria-hidden="true">↓</span></button>
+    </section>
+
+    <!-- ============================================================
+         SECTION NAVIGATION
+         ============================================================ -->
+    <nav class="section-nav" aria-label="Menu sections">
+        <div class="nav-scroll" id="sectionNav"></div>
+    </nav>
+
+    <!-- ============================================================
+         FILTER BAR
+         ============================================================ -->
+    <div class="filter-bar" role="toolbar" aria-label="Menu filters">
+        <span class="filter-label" id="filterLabel">Filter:</span>
+        <button class="filter-btn active" data-filter="all" aria-pressed="true" id="filterAll">All</button>
+        <button class="filter-btn" data-filter="veg" aria-pressed="false"><span class="dot green"></span><span id="filterVeg">Veg</span></button>
+        <button class="filter-btn" data-filter="nonveg" aria-pressed="false"><span class="dot red"></span><span id="filterNonveg">Non-Veg</span></button>
+        <button class="filter-btn" data-filter="drink" aria-pressed="false"><span class="dot blue"></span><span id="filterDrink">Drinks</span></button>
+        <button class="filter-btn" data-filter="bestseller" aria-pressed="false" id="filterBestseller">★ Bestsellers</button>
+        <button class="filter-btn" data-filter="available" aria-pressed="false" id="filterAvailable">✓ Available</button>
+        <button class="filter-clear" id="filterClear">Clear</button>
+    </div>
+
+    <!-- ============================================================
+         MENU CONTAINER
+         ============================================================ -->
+    <main id="menuContainer" role="main"></main>
+
+    <!-- ============================================================
+         RESTAURANT INFO
+         ============================================================ -->
+    <section class="restaurant-info" aria-label="Restaurant information">
+        <div class="info-grid">
+            <div class="info-item info-full">
+                <span class="info-icon">📍</span>
+                <div><div class="info-label" id="infoLabelAddress">Address</div><div class="info-value" id="infoAddress"></div></div>
+            </div>
+            <div class="info-item info-full">
+                <span class="info-icon">🕒</span>
+                <div><div class="info-label" id="infoLabelHours">Opening Hours</div><div class="info-value" id="infoHours"></div></div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">📞</span>
+                <div><div class="info-label" id="infoLabelPhone">Phone</div><div class="info-value"><a href="" id="infoPhone"></a></div></div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">✉️</span>
+                <div><div class="info-label" id="infoLabelEmail">Email</div><div class="info-value"><a href="" id="infoEmail"></a></div></div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🗺️</span>
+                <div><div class="info-label" id="infoLabelDirections">Directions</div><div class="info-value"><a href="#" id="mapLink">Open in Maps →</a></div></div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🛵</span>
+                <div><div class="info-label" id="infoLabelCitycart">CityCart</div><div class="info-value"><a href="#" data-link="citycart">Order on CityCart</a></div></div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🛍️</span>
+                <div><div class="info-label" id="infoLabelPocketmall">PocketMall</div><div class="info-value"><a href="#" data-link="pocketmall">Order on PocketMall</a></div></div>
+            </div>
+            <div class="info-item">
+                <span class="info-icon">🚗</span>
+                <div><div class="info-label" id="infoLabelGoride">GoRide</div><div class="info-value"><a href="#" data-link="goride">Book a ride</a></div></div>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="#" data-link="instagram" aria-label="Instagram" title="Instagram"><span aria-hidden="true">📷</span><span class="social-label">Instagram</span></a>
+            <a href="#" data-link="facebook" aria-label="Facebook" title="Facebook"><span aria-hidden="true">👍</span><span class="social-label">Facebook</span></a>
+            <a href="#" data-link="youtube" aria-label="YouTube" title="YouTube"><span aria-hidden="true">▶️</span><span class="social-label">YouTube</span></a>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         QR SECTION
+         ============================================================ -->
+    <section class="qr-section" aria-label="QR code">
+        <div class="qr-wrap">
+            <span class="qr-code" id="qrCodeDisplay" aria-hidden="true">📱</span>
+            <div class="qr-text"><div class="qr-title" id="qrTitle">Scan to order</div><div class="qr-sub" id="qrSub">QR Code • Digital Menu</div></div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FLOATING BUTTONS
+         ============================================================ -->
+    <div class="float-buttons">
+        <button class="float-btn" id="floatContact" aria-label="Contact us"><span aria-hidden="true">💬</span></button>
+        <button class="float-btn secondary" id="floatScrollTop" aria-label="Scroll to top"><span aria-hidden="true">↑</span></button>
+    </div>
+    <button class="scroll-top" id="scrollTopBtn" aria-label="Scroll to top"><span aria-hidden="true">↑</span></button>
+
+    <!-- ============================================================
+         FOOD DETAIL MODAL
+         ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay" role="dialog" aria-label="Food details" aria-modal="true">
+        <div class="modal" id="modalContent">
+            <img class="modal-img" id="modalImg" src="" alt="" />
+            <div class="modal-body">
+                <button class="modal-close" id="modalClose" aria-label="Close details">✕</button>
+                <div class="modal-name" id="modalName"></div>
+                <div class="modal-name-hi" id="modalNameHi"></div>
+                <div class="modal-meta" id="modalMeta"></div>
+                <div class="modal-desc" id="modalDesc"></div>
+                <div class="modal-desc-hi" id="modalDescHi"></div>
+                <div class="modal-pricing" id="modalPricing"></div>
+                <div class="modal-footer-info" id="modalFooter"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ADMIN LOGIN OVERLAY
+         ============================================================ -->
+    <div class="admin-login-overlay" id="adminLoginOverlay">
+        <div class="admin-login-box">
+            <button class="close-login" id="closeAdminLogin">✕</button>
+            <h2>Admin Access</h2>
+            <p>Enter your credentials</p>
+            <input type="text" id="adminUsername" placeholder="Username" autocomplete="username" />
+            <div class="password-field-wrapper">
+                <input type="password" id="adminPassword" placeholder="Password" autocomplete="current-password" />
+                <button type="button" class="toggle-btn" id="togglePassword" aria-label="Show password">👁</button>
+            </div>
+            <button class="login-btn" id="adminLoginBtn">Login</button>
+            <div class="login-error" id="adminLoginError"></div>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ADMIN DASHBOARD
+         ============================================================ -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <div class="admin-header">
+            <h1>🍛 AUNTY KI RASOI Admin</h1>
+            <div class="admin-actions">
+                <span id="adminStatus" style="font-size:13px;color:var(--text-muted);align-self:center;"></span>
+                <button class="logout-btn" id="adminLogoutBtn">Logout</button>
+            </div>
+        </div>
+        <div class="admin-nav" id="adminNav">
+            <button class="active" data-view="overview">📊 Overview</button>
+            <button data-view="menu">🍽️ Menu</button>
+            <button data-view="sections">📂 Categories</button>
+            <button data-view="settings">⚙️ Settings</button>
+            <button data-view="security">👤 Account</button>
+        </div>
+        <div class="admin-view active" id="viewOverview">
+            <div class="stats-grid" id="statsGrid"></div>
+            <p style="color:var(--text-muted);font-size:14px;">Welcome! Manage your menu, categories, and restaurant details here.</p>
+        </div>
+        <div class="admin-view" id="viewMenu">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+                <h2>🍽️ Menu</h2>
+                <button class="btn btn-primary" id="addItemBtn">+ Add Dish</button>
+            </div>
+            <div id="menuItemsList" class="card-grid"></div>
+        </div>
+        <div class="admin-view" id="viewSections">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+                <h2>📂 Categories</h2>
+                <button class="btn btn-primary" id="addSectionBtn">+ Add Category</button>
+            </div>
+            <div id="sectionsList" class="card-grid"></div>
+        </div>
+        <div class="admin-view" id="viewSettings">
+            <h2>⚙️ Restaurant Settings</h2>
+            <form id="settingsForm">
+                <div class="form-row">
+                    <div class="form-group"><label>Restaurant Name</label><input type="text" name="name" id="settingsName" required /></div>
+                    <div class="form-group"><label>Tagline</label><input type="text" name="tagline" id="settingsTagline" /></div>
+                </div>
+                <div class="form-group"><label>Description</label><textarea name="description" id="settingsDescription"></textarea></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Address</label><input type="text" name="address" id="settingsAddress" /></div>
+                    <div class="form-group"><label>Opening Hours</label><input type="text" name="hours" id="settingsHours" /></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>Phone</label><input type="text" name="phone" id="settingsPhone" /></div>
+                    <div class="form-group"><label>Email</label><input type="email" name="email" id="settingsEmail" /></div>
+                </div>
+                <div class="form-group"><label>Google Maps URL</label><input type="url" name="maps_url" id="settingsMaps" /></div>
+                <div class="form-row">
+                    <div class="form-group"><label>Instagram</label><input type="url" name="instagram" id="settingsInstagram" /></div>
+                    <div class="form-group"><label>Facebook</label><input type="url" name="facebook" id="settingsFacebook" /></div>
+                    <div class="form-group"><label>YouTube</label><input type="url" name="youtube" id="settingsYoutube" /></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group"><label>CityCart</label><input type="url" name="citycart" id="settingsCitycart" /></div>
+                    <div class="form-group"><label>PocketMall</label><input type="url" name="pocketmall" id="settingsPocketmall" /></div>
+                    <div class="form-group"><label>GoRide</label><input type="url" name="goride" id="settingsGoride" /></div>
+                </div>
+                <div style="margin-top:16px;">
+                    <button type="submit" class="btn btn-primary">Save Settings</button>
+                    <span id="settingsMessage" style="margin-left:12px;color:var(--gold);"></span>
+                </div>
+            </form>
+        </div>
+        <div class="admin-view" id="viewSecurity">
+            <h2>👤 Account</h2>
+            <form id="securityForm">
+                <div class="form-group"><label>Current Username</label><input type="text" name="currentUsername" id="currentUsername" autocomplete="username" /></div>
+                <div class="form-group"><label>New Username</label><input type="text" name="newUsername" id="newUsername" /></div>
+                <hr style="border-color:rgba(201,168,76,0.1);margin:16px 0;" />
+                <div class="form-group"><label>Current Password</label><input type="password" name="currentPassword" id="currentPassword" autocomplete="current-password" /></div>
+                <div class="form-group"><label>New Password</label><input type="password" name="newPassword" id="newPassword" /></div>
+                <div class="form-group"><label>Confirm New Password</label><input type="password" name="confirmPassword" id="confirmPassword" /></div>
+                <div style="margin-top:16px;">
+                    <button type="submit" class="btn btn-primary">Update Account</button>
+                </div>
+                <div id="securityMessage" style="margin-top:12px;color:var(--text-muted);"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ============================================================
+         JAVASCRIPT — Complete Application
+         ============================================================ -->
+    <script>
+        (function() {
+            'use strict';
+
+            // ============================================================
+            // 1. CONSTANTS & DEFAULT DATA (Hinglish removed)
+            // ============================================================
+            const STORAGE_KEYS = { APP_DATA: 'AKR_APP_DATA' };
+
+            const DEFAULT_SECTIONS = [
+                { id: 1, key: 'veg', name_en: 'Veg', name_hi: 'शाकाहारी', sort_order: 0, enabled: true },
+                { id: 2, key: 'nonveg', name_en: 'Non-Veg', name_hi: 'मांसाहारी', sort_order: 1, enabled: true },
+                { id: 3, key: 'drinks', name_en: 'Drinks', name_hi: 'पेय', sort_order: 2, enabled: true }
+            ];
+
+            const DEFAULT_MENU = [
+                { id: 1, section_id: 1, name_en: 'Paneer Tikka', name_hi: 'पनीर टिक्का',
+                    description_en: 'Cottage cheese marinated in spiced yoghurt, grilled to perfection.',
+                    description_hi: 'मसालेदार दही में मैरीनेट किया हुआ पनीर, बिल्कुल सही ग्रिल किया हुआ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/paneer/400/400', available: true, bestseller: true,
+                    featured: true, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 180 }, { label_en: 'Full',
+                        label_hi: 'पूरा', value: 320 }] },
+                { id: 2, section_id: 1, name_en: 'Hara Bhara Kebab', name_hi: 'हरा भरा कबाब',
+                    description_en: 'Green spinach and potato patties with a hint of mint.',
+                    description_hi: 'हरी पालक और आलू की टिक्की, पुदीने के स्वाद के साथ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/harabhara/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: '4 pcs', label_hi: '४ टुकड़े',
+                        value: 150 }, { label_en: '8 pcs', label_hi: '८ टुकड़े', value: 270 }] },
+                { id: 3, section_id: 1, name_en: 'Aloo Tikki', name_hi: 'आलू टिक्की',
+                    description_en: 'Crispy spiced potato patties served with chutney.',
+                    description_hi: 'कुरकुरी मसालेदार आलू टिक्की, चटनी के साथ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/alootikki/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: '2 pcs', label_hi: '२ टुकड़े',
+                        value: 90 }, { label_en: '4 pcs', label_hi: '४ टुकड़े', value: 160 }] },
+                { id: 4, section_id: 1, name_en: 'Samosa', name_hi: 'समोसा',
+                    description_en: 'Crispy pastry filled with spiced potatoes and peas.',
+                    description_hi: 'कुरकुरी पेस्ट्री, मसालेदार आलू और मटर से भरी हुई।',
+                    type: 'veg', image: 'https://picsum.photos/seed/samosa/400/400', available: true, bestseller: true,
+                    featured: false, pricing: [{ label_en: '2 pcs', label_hi: '२ टुकड़े', value: 60 },
+                    { label_en: '4 pcs', label_hi: '४ टुकड़े', value: 110 }] },
+                { id: 5, section_id: 1, name_en: 'Shahi Paneer', name_hi: 'शाही पनीर',
+                    description_en: 'Rich creamy cottage cheese curry with royal spices.',
+                    description_hi: 'शाही मसालों के साथ मलाईदार पनीर करी।',
+                    type: 'veg', image: 'https://picsum.photos/seed/shahipaneer/400/400', available: true,
+                    bestseller: true, featured: true, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 220 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 390 }] },
+                { id: 6, section_id: 1, name_en: 'Paneer Butter Masala', name_hi: 'पनीर बटर मसाला',
+                    description_en: 'Cottage cheese in a rich tomato and butter gravy.',
+                    description_hi: 'पनीर को टमाटर और मक्खन की मलाईदार ग्रेवी में।',
+                    type: 'veg', image: 'https://picsum.photos/seed/paneerbutter/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 200 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 360 }] },
+                { id: 7, section_id: 1, name_en: 'Dal Makhani', name_hi: 'दाल मखनी',
+                    description_en: 'Slow-cooked black lentils with butter and cream.',
+                    description_hi: 'धीमी आंच पर पकाई गई काली दाल, मक्खन और क्रीम के साथ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/dalmakhani/400/400', available: true,
+                    bestseller: true, featured: true, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 170 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 300 }] },
+                { id: 8, section_id: 1, name_en: 'Chole', name_hi: 'छोले',
+                    description_en: 'Spicy chickpea curry from the streets of Delhi.',
+                    description_hi: 'दिल्ली की सड़कों से प्रेरित मसालेदार छोले।',
+                    type: 'veg', image: 'https://picsum.photos/seed/chole/400/400', available: true, bestseller: false,
+                    featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 140 }, { label_en: 'Full',
+                        label_hi: 'पूरा', value: 250 }] },
+                { id: 9, section_id: 1, name_en: 'Baingan Bharta', name_hi: 'बैंगन भरता',
+                    description_en: 'Smoked eggplant mashed with aromatic spices.',
+                    description_hi: 'स्मोक्ड बैंगन को सुगंधित मसालों के साथ मैश किया गया।',
+                    type: 'veg', image: 'https://picsum.photos/seed/baingan/400/400', available: false,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 160 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 280 }] },
+                { id: 10, section_id: 1, name_en: 'Aloo Gobi', name_hi: 'आलू गोभी',
+                    description_en: 'Classic potato and cauliflower curry with turmeric.',
+                    description_hi: 'हल्दी के साथ क्लासिक आलू और गोभी करी।',
+                    type: 'veg', image: 'https://picsum.photos/seed/alugobi/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 130 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 230 }] },
+                { id: 11, section_id: 1, name_en: 'Butter Naan', name_hi: 'बटर नान',
+                    description_en: 'Soft tandoor-baked bread brushed with butter.',
+                    description_hi: 'मुलायम तंदूर-बेक्ड ब्रेड, मक्खन के साथ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/butternaan/400/400', available: true,
+                    bestseller: true, featured: false, pricing: [{ label_en: '1 pc', label_hi: '१ टुकड़ा', value: 50 },
+                    { label_en: '2 pcs', label_hi: '२ टुकड़े', value: 90 }] },
+                { id: 12, section_id: 1, name_en: 'Garlic Naan', name_hi: 'गार्लिक नान',
+                    description_en: 'Tandoor-baked bread with fresh garlic and butter.',
+                    description_hi: 'तंदूर-बेक्ड ब्रेड, ताजा लहसुन और मक्खन के साथ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/garlicnaan/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: '1 pc', label_hi: '१ टुकड़ा', value: 60 },
+                    { label_en: '2 pcs', label_hi: '२ टुकड़े', value: 110 }] },
+                { id: 13, section_id: 1, name_en: 'Jeera Rice', name_hi: 'जीरा राइस',
+                    description_en: 'Fragrant basmati rice tempered with cumin seeds.',
+                    description_hi: 'जीरे के साथ महकती बासमती चावल।',
+                    type: 'veg', image: 'https://picsum.photos/seed/jeerarice/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 100 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 180 }] },
+                { id: 14, section_id: 1, name_en: 'Veg Biryani', name_hi: 'वेज बिरयानी',
+                    description_en: 'Layered basmati rice with mixed vegetables and spices.',
+                    description_hi: 'लेयर्ड बासमती चावल, मिक्स वेजिटेबल्स और मसालों के साथ।',
+                    type: 'veg', image: 'https://picsum.photos/seed/vegbiryani/400/400', available: true,
+                    bestseller: true, featured: true, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 190 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 340 }] },
+                { id: 15, section_id: 2, name_en: 'Chicken Tikka', name_hi: 'चिकन टिक्का',
+                    description_en: 'Boneless chicken pieces marinated in yoghurt & spices, grilled.',
+                    description_hi: 'बोनलेस चिकन को दही और मसालों में मैरीनेट कर ग्रिल किया गया।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/chickentikka/400/400', available: true,
+                    bestseller: true, featured: true, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 220 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 390 }] },
+                { id: 16, section_id: 2, name_en: 'Tandoori Chicken', name_hi: 'तंदूरी चिकन',
+                    description_en: 'Whole chicken marinated in yoghurt and tandoori spices, roasted.',
+                    description_hi: 'पूरा चिकन दही और तंदूरी मसालों में मैरीनेट कर भुना हुआ।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/tandoorichicken/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 250 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 440 }] },
+                { id: 17, section_id: 2, name_en: 'Fish Amritsari', name_hi: 'फिश अमृतसरी',
+                    description_en: 'Tender fish fillets in a spiced gram-flour batter, deep-fried.',
+                    description_hi: 'मसालेदार बेसन के घोल में मछली के टुकड़े, डीप-फ्राइड।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/fishamritsari/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: '4 pcs', label_hi: '४ टुकड़े',
+                        value: 240 }, { label_en: '8 pcs', label_hi: '८ टुकड़े', value: 430 }] },
+                { id: 18, section_id: 2, name_en: 'Chicken 65', name_hi: 'चिकन ६५',
+                    description_en: 'Spicy deep-fried chicken with a tangy finish.',
+                    description_hi: 'मसालेदार डीप-फ्राइड चिकन, तीखे स्वाद के साथ।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/chicken65/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 200 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 360 }] },
+                { id: 19, section_id: 2, name_en: 'Butter Chicken', name_hi: 'बटर चिकन',
+                    description_en: 'Classic creamy tomato gravy with tender chicken pieces.',
+                    description_hi: 'क्लासिक मलाईदार टमाटर ग्रेवी में चिकन के टुकड़े।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/butterchicken/400/400', available: true,
+                    bestseller: true, featured: true, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 250 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 440 }] },
+                { id: 20, section_id: 2, name_en: 'Chicken Curry', name_hi: 'चिकन करी',
+                    description_en: 'Homestyle chicken curry with onion and tomato gravy.',
+                    description_hi: 'घर का स्टाइल चिकन करी, प्याज और टमाटर की ग्रेवी के साथ।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/chickencurry/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 220 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 390 }] },
+                { id: 21, section_id: 2, name_en: 'Rogan Josh', name_hi: 'रोगन जोश',
+                    description_en: 'Kashmiri lamb curry with aromatic spices and yogurt.',
+                    description_hi: 'कश्मीरी लैम्ब करी, सुगंधित मसालों और दही के साथ।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/roganjosh/400/400', available: false,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 300 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 530 }] },
+                { id: 22, section_id: 2, name_en: 'Fish Curry', name_hi: 'फिश करी',
+                    description_en: 'Coastal-style fish curry with coconut and tamarind.',
+                    description_hi: 'कोस्टल-स्टाइल फिश करी, नारियल और इमली के साथ।',
+                    type: 'nonveg', image: 'https://picsum.photos/seed/fishcurry/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Half', label_hi: 'आधा', value: 260 },
+                    { label_en: 'Full', label_hi: 'पूरा', value: 460 }] },
+                { id: 23, section_id: 3, name_en: 'Mango Lassi', name_hi: 'मैंगो लस्सी',
+                    description_en: 'Sweet yoghurt drink blended with ripe mango pulp.',
+                    description_hi: 'मीठा दही पेय, पके आम के गूदे के साथ मिलाया गया।',
+                    type: 'drink', image: 'https://picsum.photos/seed/mangolassi/400/400', available: true,
+                    bestseller: true, featured: true, pricing: [{ label_en: 'Regular', label_hi: 'सामान्य',
+                        value: 120 }, { label_en: 'Large', label_hi: 'बड़ा', value: 180 }] },
+                { id: 24, section_id: 3, name_en: 'Sweet Lassi', name_hi: 'मीठी लस्सी',
+                    description_en: 'Classic sweet yoghurt drink with a hint of rose.',
+                    description_hi: 'क्लासिक मीठा दही पेय, गुलाब के स्वाद के साथ।',
+                    type: 'drink', image: 'https://picsum.photos/seed/sweetlassi/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Regular', label_hi: 'सामान्य',
+                        value: 90 }, { label_en: 'Large', label_hi: 'बड़ा', value: 140 }] },
+                { id: 25, section_id: 3, name_en: 'Salted Lassi', name_hi: 'नमकीन लस्सी',
+                    description_en: 'Savory yoghurt drink with salt and roasted cumin.',
+                    description_hi: 'नमकीन दही पेय, नमक और भुने जीरे के साथ।',
+                    type: 'drink', image: 'https://picsum.photos/seed/saltedlassi/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Regular', label_hi: 'सामान्य',
+                        value: 80 }, { label_en: 'Large', label_hi: 'बड़ा', value: 130 }] },
+                { id: 26, section_id: 3, name_en: 'Masala Chai', name_hi: 'मसाला चाय',
+                    description_en: 'Spiced Indian tea with ginger, cardamom and cloves.',
+                    description_hi: 'मसालेदार भारतीय चाय, अदरक, इलायची और लौंग के साथ।',
+                    type: 'drink', image: 'https://picsum.photos/seed/masalachai/400/400', available: true,
+                    bestseller: true, featured: false, pricing: [{ label_en: '1 cup', label_hi: '१ कप', value: 40 },
+                    { label_en: '2 cups', label_hi: '२ कप', value: 70 }] },
+                { id: 27, section_id: 3, name_en: 'Fresh Lime Soda', name_hi: 'ताज़ा नींबू सोडा',
+                    description_en: 'Refreshing soda with fresh lime and a hint of mint.',
+                    description_hi: 'ताज़ा नींबू और पुदीने के साथ रिफ्रेशिंग सोडा।',
+                    type: 'drink', image: 'https://picsum.photos/seed/limesoda/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Regular', label_hi: 'सामान्य',
+                        value: 70 }, { label_en: 'Large', label_hi: 'बड़ा', value: 110 }] },
+                { id: 28, section_id: 3, name_en: 'Jaljeera', name_hi: 'जलजीरा',
+                    description_en: 'Tangy cumin-spiced mint water, perfect palate cleanser.',
+                    description_hi: 'तीखा जीरा-मसालेदार पुदीना पानी, परफेक्ट पैलेट क्लींजर।',
+                    type: 'drink', image: 'https://picsum.photos/seed/jaljeera/400/400', available: true,
+                    bestseller: false, featured: false, pricing: [{ label_en: 'Regular', label_hi: 'सामान्य',
+                        value: 60 }, { label_en: 'Large', label_hi: 'बड़ा', value: 100 }] }
+            ];
+
+            const DEFAULT_SETTINGS = {
+                name: 'AUNTY KI RASOI',
+                tagline: 'Home Cooked Indian Food',
+                description: 'Authentic flavours from India\'s heart, crafted with love and tradition.',
+                address: '123, Bazaar Street, Old Delhi, India',
+                hours: 'Mon–Sun: 10:00 AM – 10:00 PM',
+                phone: '+911234567890',
+                email: 'hello@auntykirasoi.com',
+                maps_url: 'https://www.google.com/maps/search/?api=1&query=123%2C%20Bazaar%20Street%2C%20Old%20Delhi%2C%20India',
+                instagram: '', facebook: '', youtube: '',
+                citycart: '', pocketmall: '', goride: ''
+            };
+
+            const DEFAULT_ADMIN = { username: 'admin', password: 'admin123' };
+
+            // ============================================================
+            // 2. DATA LAYER
+            // ============================================================
+            function getAppData() {
+                try {
+                    const raw = localStorage.getItem(STORAGE_KEYS.APP_DATA);
+                    if (raw) {
+                        const data = JSON.parse(raw);
+                        if (!data.menu) data.menu = [];
+                        if (!data.sections) data.sections = [];
+                        if (!data.settings) data.settings = {};
+                        if (!data.admin) data.admin = {};
+                        return data;
+                    }
+                } catch (e) { /* ignore */ }
+                return null;
+            }
+
+            function saveAppData(data) {
+                localStorage.setItem(STORAGE_KEYS.APP_DATA, JSON.stringify(data));
+            }
+
+            function initAppData() {
+                let data = getAppData();
+                if (!data) {
+                    data = {
+                        menu: DEFAULT_MENU,
+                        sections: DEFAULT_SECTIONS,
+                        settings: DEFAULT_SETTINGS,
+                        admin: DEFAULT_ADMIN
+                    };
+                    saveAppData(data);
+                } else {
+                    if (!data.admin || !data.admin.username) {
+                        data.admin = { ...DEFAULT_ADMIN };
+                        saveAppData(data);
+                    }
+                    let changed = false;
+                    Object.keys(DEFAULT_SETTINGS).forEach(k => {
+                        if (data.settings[k] === undefined) {
+                            data.settings[k] = DEFAULT_SETTINGS[k];
+                            changed = true;
+                        }
+                    });
+                    if (changed) saveAppData(data);
+                    // Remove any lingering Hinglish fields from menu items
+                    data.menu.forEach(item => {
+                        delete item.name_hing;
+                        delete item.description_hing;
+                        if (item.pricing) {
+                            item.pricing.forEach(p => delete p.label_hing);
+                        }
+                    });
+                }
+                return data;
+            }
+
+            // ============================================================
+            // 3. GLOBAL STATE
+            // ============================================================
+            let appData = initAppData();
+            let menuItems = appData.menu;
+            let sections = appData.sections;
+            let settings = appData.settings;
+            let adminCreds = appData.admin;
+            let adminSession = null;
+            let currentLang = 'en';
+            let activeFilters = [];
+            let currentSection = null;
+            let currentModalItemId = null;
+            let editingItemId = null;
+            let editingSectionId = null;
+
+            // ============================================================
+            // 4. UTILITY FUNCTIONS
+            // ============================================================
+            function escapeHtml(str) {
+                if (!str) return '';
+                const div = document.createElement('div');
+                div.textContent = str;
+                return div.innerHTML;
+            }
+
+            function translate(key, replacements) {
+                const dict = {
+                    en: {
+                        hero_badge: "✦ Premium Indian Cuisine",
+                        hero_tagline: "Home Cooked Indian Food",
+                        hero_desc: "Authentic flavours from India's heart, crafted with love and tradition.",
+                        hero_cta: "Explore Menu",
+                        nav_all: "All",
+                        filter_label: "Filter:",
+                        filter_all: "All",
+                        filter_veg: "Veg",
+                        filter_nonveg: "Non-Veg",
+                        filter_drink: "Drinks",
+                        filter_bestseller: "★ Bestsellers",
+                        filter_available: "✓ Available",
+                        filter_clear: "Clear",
+                        badge_veg: "Veg",
+                        badge_nonveg: "Non-Veg",
+                        badge_drink: "Drink",
+                        badge_bestseller: "★ Bestseller",
+                        badge_featured: "Featured",
+                        badge_available: "Available",
+                        badge_soldout: "Sold Out",
+                        badge_unavailable: "Unavailable",
+                        search_placeholder: "Search dishes…",
+                        search_empty: "Type to search dishes…",
+                        search_no_results: "No dishes found for \"{query}\"",
+                        info_address: "Address",
+                        info_hours: "Opening Hours",
+                        info_phone: "Phone",
+                        info_email: "Email",
+                        info_directions: "Directions",
+                        info_citycart: "CityCart",
+                        info_pocketmall: "PocketMall",
+                        info_goride: "GoRide",
+                        qr_title: "Scan to order",
+                        qr_sub: "QR Code • Digital Menu",
+                        modal_available: "Available",
+                        modal_unavailable: "Unavailable",
+                        modal_price_label: "Price"
+                    },
+                    hi: {
+                        hero_badge: "✦ प्रीमियम भारतीय व्यंजन",
+                        hero_tagline: "घर का बना भारतीय खाना",
+                        hero_desc: "भारत के दिल से प्रामाणिक स्वाद, प्रेम और परंपरा के साथ तैयार किया गया।",
+                        hero_cta: "मेनू देखें",
+                        nav_all: "सभी",
+                        filter_label: "फ़िल्टर:",
+                        filter_all: "सभी",
+                        filter_veg: "शाकाहारी",
+                        filter_nonveg: "मांसाहारी",
+                        filter_drink: "पेय",
+                        filter_bestseller: "★ बेस्टसेलर",
+                        filter_available: "✓ उपलब्ध",
+                        filter_clear: "साफ़ करें",
+                        badge_veg: "शाकाहारी",
+                        badge_nonveg: "मांसाहारी",
+                        badge_drink: "पेय",
+                        badge_bestseller: "★ बेस्टसेलर",
+                        badge_featured: "विशेष",
+                        badge_available: "उपलब्ध",
+                        badge_soldout: "बिक गया",
+                        badge_unavailable: "अनुपलब्ध",
+                        search_placeholder: "व्यंजन खोजें…",
+                        search_empty: "व्यंजन खोजने के लिए टाइप करें…",
+                        search_no_results: "\"{query}\" के लिए कोई व्यंजन नहीं मिला",
+                        info_address: "पता",
+                        info_hours: "खुलने का समय",
+                        info_phone: "फ़ोन",
+                        info_email: "ईमेल",
+                        info_directions: "दिशा-निर्देश",
+                        info_citycart: "सिटीकार्ट",
+                        info_pocketmall: "पॉकेटमॉल",
+                        info_goride: "गोराइड",
+                        qr_title: "ऑर्डर करने के लिए स्कैन करें",
+                        qr_sub: "क्यूआर कोड • डिजिटल मेनू",
+                        modal_available: "उपलब्ध",
+                        modal_unavailable: "अनुपलब्ध",
+                        modal_price_label: "कीमत"
+                    }
+                };
+                const dictLang = dict[currentLang] || dict.en;
+                let str = dictLang[key] || key;
+                if (replacements) {
+                    Object.keys(replacements).forEach(k => {
+                        str = str.replace(new RegExp('\\{' + k + '\\}', 'g'), replacements[k]);
+                    });
+                }
+                return str;
+            }
+
+            function t(obj) {
+                if (!obj) return '';
+                if (obj[currentLang] !== undefined) return obj[currentLang];
+                if (obj['name_' + currentLang] !== undefined) return obj['name_' + currentLang];
+                if (obj.en) return obj.en;
+                if (obj.name_en) return obj.name_en;
+                return '';
+            }
+
+            function getSectionLabel(sectionKey) {
+                const sec = sections.find(s => s.key === sectionKey);
+                return sec ? t({ en: sec.name_en, hi: sec.name_hi }) : sectionKey;
+            }
+
+            function formatPrice(value) { return '₹' + value; }
+
+            function getPricingDisplay(pricing) {
+                if (!pricing || !pricing.length) return '';
+                return pricing.map(p => {
+                    const label = t({ en: p.label_en, hi: p.label_hi });
+                    return label ? label + ' ' + formatPrice(p.value) : formatPrice(p.value);
+                }).join(' • ');
+            }
+
+            function getPricingHTML(pricing) {
+                if (!pricing || !pricing.length) {
+                    return `<div class="price-row"><span class="pr-label">${translate('modal_price_label')}</span><span class="pr-value">—</span></div>`;
+                }
+                return pricing.map(p => {
+                    const label = t({ en: p.label_en, hi: p.label_hi });
+                    return `<div class="price-row"><span class="pr-label">${escapeHtml(label || translate('modal_price_label'))}</span><span class="pr-value"><span class="rupee-symbol">₹</span>${p.value}</span></div>`;
+                }).join('');
+            }
+
+            function getItemImage(item) {
+                if (item.image && item.image.startsWith('data:image')) return item.image;
+                if (item.image && (item.image.startsWith('http://') || item.image.startsWith('https://') || item.image
+                        .startsWith('/'))) return item.image;
+                return 'https://picsum.photos/seed/' + (item.id || 'food') + '/400/400';
+            }
+
+            function persistAll() {
+                appData.menu = menuItems;
+                appData.sections = sections;
+                appData.settings = settings;
+                appData.admin = adminCreds;
+                saveAppData(appData);
+            }
+
+            // ============================================================
+            // 5. AUTH
+            // ============================================================
+            function authLogin(username, password) {
+                if (username === adminCreds.username && password === adminCreds.password) {
+                    adminSession = { username, loggedIn: true, timestamp: Date.now() };
+                    return true;
+                }
+                return false;
+            }
+
+            function authLogout() {
+                adminSession = null;
+                document.querySelectorAll('.modal-overlay-inline.open').forEach(el => el.remove());
+                document.querySelectorAll('.modal-overlay-inline').forEach(el => el.remove());
+            }
+
+            function authIsLoggedIn() {
+                return adminSession && adminSession.loggedIn && (Date.now() - adminSession.timestamp < 3600000);
+            }
+
+            function authUpdateCredentials(newUsername, newPassword) {
+                if (newUsername) adminCreds.username = newUsername;
+                if (newPassword) adminCreds.password = newPassword;
+                persistAll();
+                if (adminSession) adminSession.username = adminCreds.username;
+            }
+
+            // ============================================================
+            // 6. CUSTOMER UI RENDER
+            // ============================================================
+            function updateCustomerUI() {
+                document.getElementById('headerBrandText').innerHTML = escapeHtml(settings.name || 'AUNTY KI RASOI')
+                    .replace('RASOI', '<span>RASOI</span>');
+                document.getElementById('headerTagline').textContent = settings.tagline || 'Home Cooked Indian Food';
+                document.getElementById('heroBadge').textContent = translate('hero_badge');
+                document.getElementById('heroTitle').innerHTML = escapeHtml(settings.name || 'AUNTY KI RASOI').replace(
+                    'RASOI', '<span class="gold-text">RASOI</span>');
+                document.getElementById('heroTagline').textContent = settings.tagline || translate('hero_tagline');
+                document.getElementById('heroDesc').textContent = settings.description || translate('hero_desc');
+                document.getElementById('heroCtaText').textContent = translate('hero_cta');
+                document.getElementById('filterLabel').textContent = translate('filter_label');
+                document.getElementById('filterAll').textContent = translate('filter_all');
+                document.getElementById('filterVeg').textContent = translate('filter_veg');
+                document.getElementById('filterNonveg').textContent = translate('filter_nonveg');
+                document.getElementById('filterDrink').textContent = translate('filter_drink');
+                document.getElementById('filterBestseller').textContent = translate('filter_bestseller');
+                document.getElementById('filterAvailable').textContent = translate('filter_available');
+                document.getElementById('filterClear').textContent = translate('filter_clear');
+                document.getElementById('searchInput').placeholder = translate('search_placeholder');
+                document.getElementById('infoLabelAddress').textContent = translate('info_address');
+                document.getElementById('infoLabelHours').textContent = translate('info_hours');
+                document.getElementById('infoLabelPhone').textContent = translate('info_phone');
+                document.getElementById('infoLabelEmail').textContent = translate('info_email');
+                document.getElementById('infoLabelDirections').textContent = translate('info_directions');
+                document.getElementById('infoLabelCitycart').textContent = translate('info_citycart');
+                document.getElementById('infoLabelPocketmall').textContent = translate('info_pocketmall');
+                document.getElementById('infoLabelGoride').textContent = translate('info_goride');
+                document.getElementById('infoAddress').textContent = settings.address || '';
+                document.getElementById('infoHours').textContent = settings.hours || '';
+                const phoneEl = document.getElementById('infoPhone');
+                phoneEl.textContent = settings.phone || '';
+                phoneEl.href = 'tel:' + (settings.phone || '').replace(/\s/g, '');
+                const emailEl = document.getElementById('infoEmail');
+                emailEl.textContent = settings.email || '';
+                emailEl.href = 'mailto:' + (settings.email || '');
+                if (settings.maps_url) {
+                    document.getElementById('mapLink').href = settings.maps_url;
+                    document.getElementById('mapLink').target = '_blank';
+                }
+                document.getElementById('qrTitle').textContent = translate('qr_title');
+                document.getElementById('qrSub').textContent = translate('qr_sub');
+
+                document.querySelectorAll('[data-link]').forEach(el => {
+                    const key = el.dataset.link;
+                    const url = settings[key];
+                    if (url && url !== '' && url !== '#') {
+                        el.href = url;
+                        el.target = '_blank';
+                        el.rel = 'noopener noreferrer';
+                        el.classList.remove('link-placeholder');
+                        el.title = '';
+                    } else {
+                        el.href = 'javascript:void(0)';
+                        el.classList.add('link-placeholder');
+                        el.title = 'Coming soon';
+                        el.addEventListener('click', (e) => { e.preventDefault(); });
+                    }
+                });
+
+                renderSectionNav();
+                renderMenu();
+                if (currentModalItemId) {
+                    const item = menuItems.find(d => d.id === currentModalItemId);
+                    if (item) openModal(item);
+                }
+                const searchOverlay = document.getElementById('searchOverlay');
+                if (searchOverlay.classList.contains('open') && document.getElementById('searchInput').value.trim() !==
+                    '') {
+                    performSearch(document.getElementById('searchInput').value);
+                } else if (searchOverlay.classList.contains('open')) {
+                    document.getElementById('searchResults').innerHTML =
+                        `<div class="empty-state">${translate('search_empty')}</div>`;
+                }
+            }
+
+            function renderSectionNav() {
+                const container = document.getElementById('sectionNav');
+                if (!sections.length) { container.innerHTML = ''; return; }
+                let html = '';
+                const isAll = currentSection === null;
+                html +=
+                    `<button class="${isAll ? 'active' : ''}" data-section="all"><span class="nav-icon" aria-hidden="true">🍽️</span> ${translate('nav_all')}</button>`;
+                sections.forEach(s => {
+                    if (!s.enabled) return;
+                    const active = currentSection === s.key ? 'active' : '';
+                    const label = t({ en: s.name_en, hi: s.name_hi });
+                    const icon = s.key === 'veg' ? '🥬' : s.key === 'nonveg' ? '🍗' : s.key === 'drinks' ? '🥤' : '🍽️';
+                    html +=
+                        `<button class="${active}" data-section="${s.key}"><span class="nav-icon" aria-hidden="true">${icon}</span> ${escapeHtml(label)}</button>`;
+                });
+                container.innerHTML = html;
+                container.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const section = this.dataset.section;
+                        currentSection = section === 'all' ? null : section;
+                        renderSectionNav();
+                        renderMenu();
+                        document.querySelector('.filter-bar').scrollIntoView({ behavior: 'smooth',
+                            block: 'start' });
+                    });
+                });
+            }
+
+            function renderMenu() {
+                let items = [...menuItems];
+                if (currentSection) {
+                    const sec = sections.find(s => s.key === currentSection);
+                    if (sec) items = items.filter(item => item.section_id === sec.id);
+                }
+                if (activeFilters.includes('veg')) items = items.filter(item => item.type === 'veg');
+                if (activeFilters.includes('nonveg')) items = items.filter(item => item.type === 'nonveg');
+                if (activeFilters.includes('drink')) items = items.filter(item => item.type === 'drink');
+                if (activeFilters.includes('bestseller')) items = items.filter(item => item.bestseller === true);
+                if (activeFilters.includes('available')) items = items.filter(item => item.available === true);
+
+                const groups = {};
+                items.forEach(item => {
+                    const sec = sections.find(s => s.id === item.section_id);
+                    const key = sec ? sec.key : 'other';
+                    if (!groups[key]) groups[key] = [];
+                    groups[key].push(item);
+                });
+                const sortedKeys = Object.keys(groups).sort((a, b) => {
+                    const idxA = sections.findIndex(s => s.key === a);
+                    const idxB = sections.findIndex(s => s.key === b);
+                    return (idxA !== -1 ? idxA : 999) - (idxB !== -1 ? idxB : 999);
+                });
+
+                const container = document.getElementById('menuContainer');
+                if (sortedKeys.length === 0) {
+                    container.innerHTML =
+                        `<div style="text-align:center;padding:60px 20px;color:var(--text-muted);"><span style="font-size:48px;display:block;margin-bottom:12px;">🍽️</span><p>${translate('search_no_results', { query: ' ' })}</p></div>`;
+                    return;
+                }
+
+                let html = '';
+                sortedKeys.forEach(key => {
+                    const groupItems = groups[key];
+                    const sec = sections.find(s => s.key === key);
+                    const label = sec ? t({ en: sec.name_en, hi: sec.name_hi }) : key;
+                    const icon = key === 'veg' ? '🥬' : key === 'nonveg' ? '🍗' : key === 'drinks' ? '🥤' : '🍽️';
+                    html += `<div class="menu-section reveal" data-section="${key}">`;
+                    html +=
+                        `<div class="section-header"><h2>${icon} ${escapeHtml(label)}</h2><span class="section-count">${groupItems.length}</span></div>`;
+                    html += `<div class="menu-grid">`;
+                    groupItems.forEach(item => {
+                        const name = escapeHtml(t({ en: item.name_en, hi: item.name_hi }));
+                        const desc = escapeHtml(t({ en: item.description_en, hi: item.description_hi }));
+                        const isBestseller = item.bestseller === true;
+                        const isFeatured = item.featured === true;
+                        const isAvailable = item.available === true;
+                        const priceDisplay = getPricingDisplay(item.pricing);
+                        const imgSrc = getItemImage(item);
+
+                        let badges = '';
+                        if (item.type === 'veg') badges +=
+                            `<span class="badge-veg">${translate('badge_veg')}</span>`;
+                        else if (item.type === 'nonveg') badges +=
+                            `<span class="badge-nonveg">${translate('badge_nonveg')}</span>`;
+                        else if (item.type === 'drink') badges +=
+                            `<span class="badge-gold">${translate('badge_drink')}</span>`;
+                        if (isBestseller) badges +=
+                            `<span class="badge-bestseller">${translate('badge_bestseller')}</span>`;
+                        if (isFeatured) badges +=
+                            `<span class="badge-gold">${translate('badge_featured')}</span>`;
+                        if (!isAvailable) badges +=
+                            `<span class="badge-unavailable">${translate('badge_unavailable')}</span>`;
+
+                        let vegIndicatorHTML = '';
+                        if (item.type === 'veg') vegIndicatorHTML =
+                            `<span class="veg-indicator green" aria-label="Vegetarian"></span>`;
+                        else if (item.type === 'nonveg') vegIndicatorHTML =
+                            `<span class="veg-indicator red" aria-label="Non-Vegetarian"></span>`;
+
+                        const availabilityText = isAvailable ? translate('badge_available') : translate(
+                            'badge_soldout');
+                        const availabilityClass = isAvailable ? 'available' : 'unavailable';
+
+                        html += `
+                            <div class="menu-card" data-id="${item.id}">
+                                <img class="card-img" src="${imgSrc}" alt="${name}" loading="lazy" />
+                                <div class="card-body">
+                                    <div class="card-top">
+                                        <span class="card-name">${name}</span>
+                                        <div class="card-badges">${badges}</div>
+                                    </div>
+                                    ${desc ? `<div class="card-desc">${desc}</div>` : ''}
+                                    <div class="card-bottom">
+                                        <span class="card-price">${priceDisplay || '<span class="rupee-symbol">₹</span>' + (item.pricing?.[0]?.value || 0)}</span>
+                                        <div class="card-extra">
+                                            ${vegIndicatorHTML}
+                                            ${isFeatured ? '<span class="featured-star" aria-label="Featured">✦</span>' : ''}
+                                            <span class="availability ${availabilityClass}">${availabilityText}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += `</div></div>`;
+                });
+                container.innerHTML = html;
+
+                container.querySelectorAll('.menu-card').forEach(card => {
+                    card.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.id);
+                        const item = menuItems.find(d => d.id === id);
+                        if (item) openModal(item);
+                    });
+                });
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+                }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+                document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    const filter = btn.dataset.filter;
+                    const active = activeFilters.includes(filter);
+                    btn.classList.toggle('active', active);
+                    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+                });
+                const allBtn = document.getElementById('filterAll');
+                if (allBtn) {
+                    const isAllActive = activeFilters.length === 0;
+                    allBtn.classList.toggle('active', isAllActive);
+                    allBtn.setAttribute('aria-pressed', isAllActive ? 'true' : 'false');
+                }
+            }
+
+            // ============================================================
+            // 7. MODAL
+            // ============================================================
+            function openModal(item) {
+                currentModalItemId = item.id;
+                const name = escapeHtml(t({ en: item.name_en, hi: item.name_hi }));
+                const desc = escapeHtml(t({ en: item.description_en, hi: item.description_hi }));
+                const imgSrc = getItemImage(item);
+                const isAvailable = item.available === true;
+                const isBestseller = item.bestseller === true;
+                const isFeatured = item.featured === true;
+
+                let altName = '',
+                    altDesc = '';
+                if (currentLang === 'en') { altName = item.name_hi || '';
+                    altDesc = item.description_hi || ''; } else { altName = item.name_en || '';
+                    altDesc = item.description_en || ''; }
+
+                document.getElementById('modalImg').src = imgSrc;
+                document.getElementById('modalImg').alt = name;
+                document.getElementById('modalName').textContent = name;
+                document.getElementById('modalNameHi').textContent = (altName && altName !== name) ? altName : '';
+                document.getElementById('modalDesc').textContent = desc || '';
+                document.getElementById('modalDescHi').textContent = (altDesc && altDesc !== desc) ? altDesc : '';
+
+                let metaHTML = '';
+                const typeLabel = item.type === 'veg' ? translate('badge_veg') : item.type === 'nonveg' ? translate(
+                    'badge_nonveg') : item.type === 'drink' ? translate('badge_drink') : '';
+                if (typeLabel) {
+                    const cls = item.type === 'veg' ? 'badge-veg' : item.type === 'nonveg' ? 'badge-nonveg' :
+                        'badge-gold';
+                    metaHTML += `<span class="${cls}">${typeLabel}</span>`;
+                }
+                if (isBestseller) metaHTML += `<span class="badge-bestseller">${translate('badge_bestseller')}</span>`;
+                if (isFeatured) metaHTML += `<span class="badge-gold">${translate('badge_featured')}</span>`;
+                if (!isAvailable) metaHTML += `<span class="badge-unavailable">${translate('badge_unavailable')}</span>`;
+                document.getElementById('modalMeta').innerHTML = metaHTML;
+
+                document.getElementById('modalPricing').innerHTML = getPricingHTML(item.pricing);
+
+                let footerHTML = '';
+                const sec = sections.find(s => s.id === item.section_id);
+                if (sec) footerHTML += `<span>📂 ${escapeHtml(getSectionLabel(sec.key))}</span>`;
+                const availabilityText = isAvailable ? translate('modal_available') : translate('modal_unavailable');
+                footerHTML += `<span>${isAvailable ? '✅' : '❌'} ${availabilityText}</span>`;
+                document.getElementById('modalFooter').innerHTML = footerHTML;
+
+                document.getElementById('modalOverlay').classList.add('open');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => document.getElementById('modalClose').focus(), 50);
+            }
+
+            function closeModal() {
+                document.getElementById('modalOverlay').classList.remove('open');
+                document.body.style.overflow = '';
+                currentModalItemId = null;
+            }
+
+            // ============================================================
+            // 8. SEARCH
+            // ============================================================
+            function performSearch(query) {
+                const q = query.trim().toLowerCase();
+                const resultsEl = document.getElementById('searchResults');
+                if (!q) {
+                    resultsEl.innerHTML = `<div class="empty-state">${translate('search_empty')}</div>`;
+                    return;
+                }
+                const results = menuItems.filter(item => {
+                    const name = t({ en: item.name_en, hi: item.name_hi }).toLowerCase();
+                    const desc = t({ en: item.description_en, hi: item.description_hi }).toLowerCase();
+                    const engName = (item.name_en || '').toLowerCase();
+                    const hiName = (item.name_hi || '').toLowerCase();
+                    return name.includes(q) || desc.includes(q) || engName.includes(q) || hiName.includes(q);
+                });
+                if (results.length === 0) {
+                    resultsEl.innerHTML =
+                        `<div class="empty-state">${translate('search_no_results', { query: escapeHtml(query) })}</div>`;
+                    return;
+                }
+                let html = '';
+                results.slice(0, 20).forEach(item => {
+                    const name = escapeHtml(t({ en: item.name_en, hi: item.name_hi }));
+                    const priceDisplay = getPricingDisplay(item.pricing) || '<span class="rupee-symbol">₹</span>' + (item
+                        .pricing?.[0]?.value || 0);
+                    const imgSrc = getItemImage(item);
+                    const sec = sections.find(s => s.id === item.section_id);
+                    const sectionLabel = sec ? getSectionLabel(sec.key) : '';
+                    const typeStr = item.type === 'veg' ? translate('badge_veg') : item.type === 'nonveg' ? translate(
+                        'badge_nonveg') : item.type === 'drink' ? translate('badge_drink') : '';
+                    html += `
+                        <div class="result-item" data-id="${item.id}">
+                            <img class="ri-img" src="${imgSrc}" alt="${name}" loading="lazy" />
+                            <div class="ri-info">
+                                <div class="ri-name">${name}</div>
+                                <div class="ri-section">${escapeHtml(sectionLabel)} • ${typeStr}</div>
+                            </div>
+                            <div class="ri-price">${priceDisplay}</div>
+                        </div>
+                    `;
+                });
+                resultsEl.innerHTML = html;
+                resultsEl.querySelectorAll('.result-item').forEach(el => {
+                    el.addEventListener('click', function() {
+                        const id = parseInt(this.dataset.id);
+                        const item = menuItems.find(d => d.id === id);
+                        if (item) { closeSearch();
+                            openModal(item); }
+                    });
+                });
+            }
+
+            function openSearch() {
+                const overlay = document.getElementById('searchOverlay');
+                overlay.classList.add('open');
+                document.body.style.overflow = 'hidden';
+                setTimeout(() => document.getElementById('searchInput').focus(), 100);
+                const val = document.getElementById('searchInput').value;
+                if (val.trim() !== '') performSearch(val);
+                else document.getElementById('searchResults').innerHTML =
+                    `<div class="empty-state">${translate('search_empty')}</div>`;
+            }
+
+            function closeSearch() {
+                document.getElementById('searchOverlay').classList.remove('open');
+                document.body.style.overflow = '';
+                document.getElementById('searchInput').value = '';
+                document.getElementById('searchResults').innerHTML =
+                    `<div class="empty-state">${translate('search_empty')}</div>`;
+            }
+
+            // ============================================================
+            // 9. LANGUAGE & FILTERS
+            // ============================================================
+            function setLanguage(lang) {
+                currentLang = lang;
+                document.querySelectorAll('.lang-toggle button').forEach(btn => {
+                    const pressed = btn.dataset.lang === lang;
+                    btn.classList.toggle('active', pressed);
+                    btn.setAttribute('aria-pressed', pressed ? 'true' : 'false');
+                });
+                updateCustomerUI();
+            }
+
+            function toggleFilter(filter) {
+                const idx = activeFilters.indexOf(filter);
+                if (idx > -1) activeFilters.splice(idx, 1);
+                else activeFilters.push(filter);
+                renderMenu();
+            }
+
+            function clearFilters() {
+                activeFilters = [];
+                renderMenu();
+            }
+
+            // ============================================================
+            // 10. SCROLL & LINKS
+            // ============================================================
+            function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+            function handleScroll() {
+                const show = window.scrollY > 400;
+                const btn = document.getElementById('scrollTopBtn');
+                if (show) { btn.classList.add('visible');
+                    document.getElementById('floatScrollTop').style.display = 'flex'; } else { btn.classList.remove(
+                        'visible');
+                    document.getElementById('floatScrollTop').style.display = 'none'; }
+            }
+
+            // ============================================================
+            // 11. TOAST
+            // ============================================================
+            let toastTimer = null;
+
+            function showToast(msg) {
+                const el = document.getElementById('toast');
+                el.textContent = msg;
+                el.classList.add('show');
+                if (toastTimer) clearTimeout(toastTimer);
+                toastTimer = setTimeout(() => { el.classList.remove('show'); }, 3000);
+            }
+
+            // ============================================================
+            // 12. HIDDEN ADMIN TRIGGER
+            // ============================================================
+            let adminTapCount = 0;
+            let adminTapTimer = null;
+
+            function resetAdminTap() { adminTapCount = 0; if (adminTapTimer) { clearTimeout(adminTapTimer);
+                    adminTapTimer = null; } }
+
+            function handleAdminTap(e) {
+                e.stopPropagation();
+                adminTapCount++;
+                if (adminTapTimer) clearTimeout(adminTapTimer);
+                adminTapTimer = setTimeout(() => { resetAdminTap(); }, 3000);
+                if (adminTapCount >= 5) {
+                    resetAdminTap();
+                    document.getElementById('adminLoginOverlay').classList.add('open');
+                    document.getElementById('adminUsername').value = '';
+                    document.getElementById('adminPassword').value = '';
+                    document.getElementById('adminLoginError').textContent = '';
+                    setTimeout(() => document.getElementById('adminUsername').focus(), 100);
+                }
+            }
+
+            // ============================================================
+            // 13. ADMIN LOGIN
+            // ============================================================
+            function adminLoginHandler() {
+                const username = document.getElementById('adminUsername').value.trim();
+                const password = document.getElementById('adminPassword').value.trim();
+                const errEl = document.getElementById('adminLoginError');
+                if (!username || !password) { errEl.textContent = 'Please enter both fields.'; return; }
+                if (authLogin(username, password)) {
+                    document.getElementById('adminLoginOverlay').classList.remove('open');
+                    document.getElementById('adminDashboard').classList.add('open');
+                    document.getElementById('adminStatus').textContent = 'Logged in as ' + username;
+                    renderAdminDashboard();
+                } else {
+                    errEl.textContent = 'Invalid credentials.';
+                }
+            }
+
+            // ============================================================
+            // 14. ADMIN DASHBOARD RENDER
+            // ============================================================
+            function renderAdminDashboard() {
+                if (!authIsLoggedIn()) return;
+                const total = menuItems.length;
+                const available = menuItems.filter(i => i.available).length;
+                const sold = total - available;
+                const veg = menuItems.filter(i => i.type === 'veg').length;
+                const nonveg = menuItems.filter(i => i.type === 'nonveg').length;
+                const drinks = menuItems.filter(i => i.type === 'drink').length;
+                const bestsellers = menuItems.filter(i => i.bestseller).length;
+                const featured = menuItems.filter(i => i.featured).length;
+                const secCount = sections.filter(s => s.enabled).length;
+                document.getElementById('statsGrid').innerHTML = `
+                    <div class="stat-card"><div class="stat-number">${total}</div><div class="stat-label">Total Dishes</div></div>
+                    <div class="stat-card"><div class="stat-number">${available}</div><div class="stat-label">Available</div></div>
+                    <div class="stat-card"><div class="stat-number">${sold}</div><div class="stat-label">Sold Out</div></div>
+                    <div class="stat-card"><div class="stat-number">${veg}</div><div class="stat-label">Veg</div></div>
+                    <div class="stat-card"><div class="stat-number">${nonveg}</div><div class="stat-label">Non-Veg</div></div>
+                    <div class="stat-card"><div class="stat-number">${drinks}</div><div class="stat-label">Drinks</div></div>
+                    <div class="stat-card"><div class="stat-number">${bestsellers}</div><div class="stat-label">Bestsellers</div></div>
+                    <div class="stat-card"><div class="stat-number">${featured}</div><div class="stat-label">Featured</div></div>
+                    <div class="stat-card"><div class="stat-number">${secCount}</div><div class="stat-label">Categories</div></div>
+                `;
+                renderAdminMenu();
+                renderAdminSections();
+                renderAdminSettings();
+            }
+
+            function renderAdminMenu() {
+                const container = document.getElementById('menuItemsList');
+                if (!menuItems.length) {
+                    container.innerHTML =
+                        `<div class="empty-state"><span style="font-size:48px;display:block;margin-bottom:12px;">🍽️</span><p>No dishes added yet.</p><p style="font-size:13px;margin-top:4px;">Add your first dish to start building your menu.</p><button class="btn btn-primary" style="margin-top:16px;" onclick="addItem()">+ Add Your First Dish</button></div>`;
+                    return;
+                }
+                let html = '';
+                menuItems.forEach(item => {
+                    const sec = sections.find(s => s.id === item.section_id);
+                    const secName = sec ? t({ en: sec.name_en, hi: sec.name_hi }) : 'Unknown';
+                    const priceDisplay = getPricingDisplay(item.pricing);
+                    const imgSrc = getItemImage(item);
+                    html += `
+                        <div class="card-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">${escapeHtml(item.name_en)}</div>
+                                    <div class="item-sub">${secName} • ${item.type} • ${item.available ? '✅ Available' : '❌ Sold Out'}</div>
+                                </div>
+                                <div>${item.bestseller ? '⭐' : ''} ${item.featured ? '✦' : ''}</div>
+                            </div>
+                            <div style="display:flex;align-items:center;gap:8px;margin:4px 0;">
+                                <img src="${imgSrc}" style="width:40px;height:40px;object-fit:cover;border-radius:4px;" alt="preview" />
+                                <span class="item-sub">${priceDisplay}</span>
+                            </div>
+                            <div class="item-actions">
+                                <button class="edit-btn" onclick="editItem(${item.id})">✏️ Edit</button>
+                                <button class="delete-btn" onclick="deleteItem(${item.id})">🗑️ Delete</button>
+                                <button onclick="duplicateItem(${item.id})">📋 Duplicate</button>
+                                <button onclick="toggleItemField(${item.id}, 'available')">${item.available ? '🔴 Mark Sold Out' : '🟢 Mark Available'}</button>
+                                <button onclick="toggleItemField(${item.id}, 'bestseller')">${item.bestseller ? '⭐ Unmark Bestseller' : '⭐ Mark Bestseller'}</button>
+                                <button onclick="toggleItemField(${item.id}, 'featured')">${item.featured ? '✦ Unmark Featured' : '✦ Mark Featured'}</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+
+            function renderAdminSections() {
+                const container = document.getElementById('sectionsList');
+                if (!sections.length) {
+                    container.innerHTML =
+                        `<div class="empty-state"><span style="font-size:48px;display:block;margin-bottom:12px;">📂</span><p>No categories yet.</p><p style="font-size:13px;margin-top:4px;">Create a section such as Main Course, Snacks, or Drinks.</p><button class="btn btn-primary" style="margin-top:16px;" onclick="addSection()">+ Add Category</button></div>`;
+                    return;
+                }
+                let html = '';
+                sections.forEach(s => {
+                    html += `
+                        <div class="card-item">
+                            <div class="item-header">
+                                <div>
+                                    <div class="item-title">${escapeHtml(s.name_en)}</div>
+                                    <div class="item-sub">Key: ${s.key} • ${s.enabled ? '✅ Enabled' : '❌ Disabled'}</div>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <button class="edit-btn" onclick="editSection(${s.id})">✏️ Edit</button>
+                                <button class="delete-btn" onclick="deleteSection(${s.id})">🗑️ Delete</button>
+                                <button onclick="toggleSectionEnabled(${s.id})">${s.enabled ? '🔴 Disable' : '🟢 Enable'}</button>
+                            </div>
+                        </div>
+                    `;
+                });
+                container.innerHTML = html;
+            }
+
+            function renderAdminSettings() {
+                document.getElementById('settingsName').value = settings.name || '';
+                document.getElementById('settingsTagline').value = settings.tagline || '';
+                document.getElementById('settingsDescription').value = settings.description || '';
+                document.getElementById('settingsAddress').value = settings.address || '';
+                document.getElementById('settingsHours').value = settings.hours || '';
+                document.getElementById('settingsPhone').value = settings.phone || '';
+                document.getElementById('settingsEmail').value = settings.email || '';
+                document.getElementById('settingsMaps').value = settings.maps_url || '';
+                document.getElementById('settingsInstagram').value = settings.instagram || '';
+                document.getElementById('settingsFacebook').value = settings.facebook || '';
+                document.getElementById('settingsYoutube').value = settings.youtube || '';
+                document.getElementById('settingsCitycart').value = settings.citycart || '';
+                document.getElementById('settingsPocketmall').value = settings.pocketmall || '';
+                document.getElementById('settingsGoride').value = settings.goride || '';
+                document.getElementById('currentUsername').value = adminCreds.username || '';
+            }
+
+            // ============================================================
+            // 15. ADMIN CRUD - Beginner Friendly Add/Edit Item
+            // ============================================================
+            function getPricingModeForm(pricing, mode) {
+                if (!mode) {
+                    if (!pricing || pricing.length === 0) mode = 'single';
+                    else if (pricing.length === 1) mode = 'single';
+                    else if (pricing.length === 2 && pricing[0].label_en === 'Half' && pricing[1].label_en === 'Full')
+                        mode = 'halffull';
+                    else mode = 'multiple';
+                }
+                let html = '';
+                if (mode === 'single') {
+                    const val = pricing && pricing.length ? pricing[0].value : '';
+                    html = `
+                        <div class="price-row">
+                            <div class="rupee-input-wrap">
+                                <span class="rupee-prefix">₹</span>
+                                <input type="number" id="priceSingle" value="${val}" placeholder="Enter price" min="0" step="0.5" />
+                            </div>
+                        </div>
+                    `;
+                } else if (mode === 'halffull') {
+                    const half = pricing && pricing.length > 0 ? pricing[0].value : '';
+                    const full = pricing && pricing.length > 1 ? pricing[1].value : '';
+                    html = `
+                        <div class="price-row">
+                            <span style="min-width:50px;">Half</span>
+                            <div class="rupee-input-wrap">
+                                <span class="rupee-prefix">₹</span>
+                                <input type="number" id="priceHalf" value="${half}" placeholder="Half price" min="0" step="0.5" />
+                            </div>
+                        </div>
+                        <div class="price-row">
+                            <span style="min-width:50px;">Full</span>
+                            <div class="rupee-input-wrap">
+                                <span class="rupee-prefix">₹</span>
+                                <input type="number" id="priceFull" value="${full}" placeholder="Full price" min="0" step="0.5" />
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    let rows = '';
+                    if (pricing && pricing.length) {
+                        pricing.forEach((p, idx) => {
+                            rows += `
+                                <div class="price-row">
+                                    <input type="text" id="sizeLabel_${idx}" value="${escapeHtml(p.label_en)}" placeholder="Size name" style="flex:1;min-width:80px;" />
+                                    <div class="rupee-input-wrap">
+                                        <span class="rupee-prefix">₹</span>
+                                        <input type="number" id="sizeValue_${idx}" value="${p.value}" placeholder="Price" min="0" step="0.5" />
+                                    </div>
+                                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+                                </div>
+                            `;
+                        });
+                    } else {
+                        rows = `
+                            <div class="price-row">
+                                <input type="text" id="sizeLabel_0" placeholder="Size name" style="flex:1;min-width:80px;" />
+                                <div class="rupee-input-wrap">
+                                    <span class="rupee-prefix">₹</span>
+                                    <input type="number" id="sizeValue_0" placeholder="Price" min="0" step="0.5" />
+                                </div>
+                                <button type="button" class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+                            </div>
+                        `;
+                    }
+                    html = `
+                        <div id="sizeRows">
+                            ${rows}
+                        </div>
+                        <button type="button" class="btn-secondary" style="margin-top:8px;" onclick="addSizeRow()">+ Add another size</button>
+                    `;
+                }
+                return html;
+            }
+
+            function getItemFormHtml(item) {
+                const isEdit = !!item;
+                const title = isEdit ? '✏️ Edit Dish' : '🍛 Add New Dish';
+                const secOptions = sections.map(s =>
+                    `<option value="${s.id}" ${isEdit && s.id === item.section_id ? 'selected' : ''}>${escapeHtml(s.name_en)}</option>`
+                    ).join('');
+                const typeMap = { veg: 'Veg', nonveg: 'Non-Veg', drink: 'Drink' };
+                const currentType = isEdit ? item.type : 'veg';
+
+                // Pricing mode
+                let pricingMode = 'single';
+                if (isEdit && item.pricing) {
+                    if (item.pricing.length === 2 && item.pricing[0].label_en === 'Half' && item.pricing[1].label_en ===
+                        'Full') pricingMode = 'halffull';
+                    else if (item.pricing.length > 1) pricingMode = 'multiple';
+                }
+
+                const pricingHtml = getPricingModeForm(isEdit ? item.pricing : null, pricingMode);
+
+                const imgSrc = isEdit ? getItemImage(item) : 'https://picsum.photos/seed/placeholder/400/400';
+                const imgData = isEdit ? (item.image || '') : '';
+
+                return `
+                    <div class="admin-form">
+                        <div class="admin-form-step">
+                            <div class="step-title"><span class="step-number">1</span> Basic Information</div>
+                            <div class="form-group">
+                                <label>Dish Name *</label>
+                                <input type="text" id="itemNameEn" value="${isEdit ? escapeHtml(item.name_en) : ''}" placeholder="e.g. Butter Chicken" required />
+                                <div class="form-error" id="errNameEn">Please enter the dish name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Hindi Name *</label>
+                                <input type="text" id="itemNameHi" value="${isEdit ? escapeHtml(item.name_hi) : ''}" placeholder="e.g. बटर चिकन" required />
+                                <div class="form-error" id="errNameHi">Please enter the Hindi name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Description</label>
+                                <textarea id="itemDescEn" placeholder="Describe the dish in English">${isEdit ? escapeHtml(item.description_en) : ''}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Hindi Description</label>
+                                <textarea id="itemDescHi" placeholder="Describe the dish in Hindi">${isEdit ? escapeHtml(item.description_hi) : ''}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="admin-form-step">
+                            <div class="step-title"><span class="step-number">2</span> Choose Category</div>
+                            <div class="form-group">
+                                <label>Which section does this dish belong to?</label>
+                                <select id="itemSection" required>
+                                    <option value="">— Select a section —</option>
+                                    ${secOptions}
+                                </select>
+                            </div>
+                            <div class="section-create-inline">
+                                <input type="text" id="newSectionName" placeholder="Or create a new section..." />
+                                <button type="button" class="btn btn-secondary btn-sm" onclick="quickAddSection()">+ Create</button>
+                            </div>
+                            <div class="form-error" id="errSection">Please select a section.</div>
+                        </div>
+
+                        <div class="admin-form-step">
+                            <div class="step-title"><span class="step-number">3</span> Dish Type</div>
+                            <div class="type-selector" id="typeSelector">
+                                <div class="type-option ${currentType === 'veg' ? 'active' : ''}" data-type="veg">
+                                    <span class="dot green"></span> Vegetarian
+                                </div>
+                                <div class="type-option ${currentType === 'nonveg' ? 'active' : ''}" data-type="nonveg">
+                                    <span class="dot red"></span> Non-Vegetarian
+                                </div>
+                                <div class="type-option ${currentType === 'drink' ? 'active' : ''}" data-type="drink">
+                                    <span class="dot blue"></span> Drink
+                                </div>
+                            </div>
+                            <input type="hidden" id="itemType" value="${currentType}" />
+                        </div>
+
+                        <div class="admin-form-step">
+                            <div class="step-title"><span class="step-number">4</span> Price</div>
+                            <div class="pricing-mode-selector" id="pricingModeSelector">
+                                <div class="pm-option ${pricingMode === 'single' ? 'active' : ''}" data-mode="single">One Price</div>
+                                <div class="pm-option ${pricingMode === 'halffull' ? 'active' : ''}" data-mode="halffull">Half / Full</div>
+                                <div class="pm-option ${pricingMode === 'multiple' ? 'active' : ''}" data-mode="multiple">Multiple Sizes</div>
+                            </div>
+                            <div class="pricing-rows" id="pricingRows">
+                                ${pricingHtml}
+                            </div>
+                            <div class="form-error" id="errPrice">Please enter a valid price.</div>
+                        </div>
+
+                        <div class="admin-form-step">
+                            <div class="step-title"><span class="step-number">5</span> Dish Photo</div>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <div id="imagePreviewWrap">
+                                    <span class="upload-icon">📷</span>
+                                    <div class="upload-text">Add Dish Photo</div>
+                                    <div class="upload-sub">Click to choose an image (JPG, PNG, WEBP)</div>
+                                </div>
+                                <input type="file" id="itemImageFile" accept="image/*" style="display:none;" />
+                                <div id="imagePreviewContainer" style="display:none;margin-top:8px;">
+                                    <div class="preview-wrap">
+                                        <img id="itemImagePreview" src="${imgSrc}" style="max-width:150px;max-height:150px;border-radius:8px;border:1px solid rgba(255,255,255,0.06);" />
+                                    </div>
+                                    <div class="preview-actions">
+                                        <button type="button" class="btn-secondary" onclick="document.getElementById('itemImageFile').click()">🔄 Replace Photo</button>
+                                        <button type="button" class="btn-secondary" onclick="removeImage()">🗑️ Remove Photo</button>
+                                    </div>
+                                </div>
+                                <input type="hidden" id="itemImageData" value="${escapeHtml(imgData)}" />
+                            </div>
+                        </div>
+
+                        <div class="admin-form-step">
+                            <div class="step-title"><span class="step-number">6</span> Status</div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <span class="toggle-label">Availability</span>
+                                    <div class="toggle-switch ${isEdit ? (item.available ? 'active' : '') : 'active'}" id="toggleAvailable" onclick="toggleSwitch(this)">
+                                        <div class="toggle-knob"></div>
+                                    </div>
+                                    <span class="toggle-helper" id="availableHelper">${isEdit ? (item.available ? 'Available' : 'Sold Out') : 'Available'}</span>
+                                </div>
+                                <input type="hidden" id="itemAvailable" value="${isEdit ? (item.available ? '1' : '0') : '1'}" />
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <span class="toggle-label">⭐ Bestseller</span>
+                                    <div class="toggle-switch ${isEdit && item.bestseller ? 'active' : ''}" id="toggleBestseller" onclick="toggleSwitch(this)">
+                                        <div class="toggle-knob"></div>
+                                    </div>
+                                    <span class="toggle-helper">Mark dishes that customers order most often.</span>
+                                </div>
+                                <input type="hidden" id="itemBestseller" value="${isEdit && item.bestseller ? '1' : '0'}" />
+                            </div>
+                            <div class="form-group">
+                                <div class="toggle-group">
+                                    <span class="toggle-label">✨ Featured</span>
+                                    <div class="toggle-switch ${isEdit && item.featured ? 'active' : ''}" id="toggleFeatured" onclick="toggleSwitch(this)">
+                                        <div class="toggle-knob"></div>
+                                    </div>
+                                    <span class="toggle-helper">Highlight this dish on your menu.</span>
+                                </div>
+                                <input type="hidden" id="itemFeatured" value="${isEdit && item.featured ? '1' : '0'}" />
+                            </div>
+                        </div>
+
+                        <div class="save-status" id="saveStatus"></div>
+
+                        <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;">
+                            <button type="button" class="btn btn-secondary" onclick="closeAdminModal()">Cancel</button>
+                            <button type="submit" class="btn btn-primary" id="saveItemBtn">💾 ${isEdit ? 'Save Changes' : 'Save Dish'}</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function toggleSwitch(el) {
+                el.classList.toggle('active');
+                const hidden = el.parentElement.querySelector('input[type="hidden"]');
+                if (hidden) {
+                    hidden.value = el.classList.contains('active') ? '1' : '0';
+                }
+                const helper = el.parentElement.querySelector('.toggle-helper');
+                if (helper) {
+                    const label = el.parentElement.querySelector('.toggle-label');
+                    if (label && label.textContent.includes('Availability')) {
+                        helper.textContent = el.classList.contains('active') ? 'Available' : 'Sold Out';
+                    }
+                }
+            }
+
+            function addSizeRow() {
+                const container = document.getElementById('sizeRows');
+                if (!container) return;
+                const idx = container.children.length;
+                const row = document.createElement('div');
+                row.className = 'price-row';
+                row.innerHTML = `
+                    <input type="text" id="sizeLabel_${idx}" placeholder="Size name" style="flex:1;min-width:80px;" />
+                    <div class="rupee-input-wrap">
+                        <span class="rupee-prefix">₹</span>
+                        <input type="number" id="sizeValue_${idx}" placeholder="Price" min="0" step="0.5" />
+                    </div>
+                    <button type="button" class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+                `;
+                container.appendChild(row);
+            }
+
+            function removeImage() {
+                document.getElementById('itemImagePreview').src = 'https://picsum.photos/seed/placeholder/400/400';
+                document.getElementById('itemImageData').value = '';
+                document.getElementById('itemImageFile').value = '';
+                document.getElementById('imagePreviewContainer').style.display = 'block';
+                document.getElementById('imagePreviewWrap').style.display = 'none';
+                document.getElementById('imageUploadArea').classList.add('has-image');
+            }
+
+            function quickAddSection() {
+                const input = document.getElementById('newSectionName');
+                const name = input.value.trim();
+                if (!name) { alert('Please enter a section name.'); return; }
+                const key = name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                if (sections.some(s => s.key === key)) { alert('A section with this name already exists.'); return; }
+                const newSec = {
+                    id: Date.now(),
+                    key: key,
+                    name_en: name,
+                    name_hi: name,
+                    sort_order: sections.length,
+                    enabled: true
+                };
+                sections.push(newSec);
+                persistAll();
+                // Refresh the section dropdown
+                const select = document.getElementById('itemSection');
+                const opt = document.createElement('option');
+                opt.value = newSec.id;
+                opt.textContent = name;
+                select.appendChild(opt);
+                select.value = newSec.id;
+                input.value = '';
+                showToast('Section "' + name + '" created!');
+                renderAdminSections();
+                renderSectionNav();
+                renderMenu();
+            }
+
+            function openItemForm(item) {
+                const isEdit = !!item;
+                const formHtml = getItemFormHtml(item);
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay-inline open';
+                modal.id = 'adminEditModal';
+                modal.innerHTML = `
+                    <div class="modal-box-inline">
+                        <button class="close-modal" onclick="closeAdminModal()">✕</button>
+                        <h2>${isEdit ? '✏️ Edit Dish' : '🍛 Add New Dish'}</h2>
+                        <form id="itemForm">
+                            ${formHtml}
+                        </form>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                // Type selector
+                document.querySelectorAll('.type-option').forEach(el => {
+                    el.addEventListener('click', function() {
+                        document.querySelectorAll('.type-option').forEach(e => e.classList.remove('active'));
+                        this.classList.add('active');
+                        document.getElementById('itemType').value = this.dataset.type;
+                    });
+                });
+
+                // Pricing mode selector
+                document.querySelectorAll('.pm-option').forEach(el => {
+                    el.addEventListener('click', function() {
+                        document.querySelectorAll('.pm-option').forEach(e => e.classList.remove('active'));
+                        this.classList.add('active');
+                        const mode = this.dataset.mode;
+                        const container = document.getElementById('pricingRows');
+                        if (!container) return;
+                        // Build pricing HTML based on mode
+                        let html = '';
+                        if (mode === 'single') {
+                            html = `
+                                <div class="price-row">
+                                    <div class="rupee-input-wrap">
+                                        <span class="rupee-prefix">₹</span>
+                                        <input type="number" id="priceSingle" placeholder="Enter price" min="0" step="0.5" />
+                                    </div>
+                                </div>
+                            `;
+                        } else if (mode === 'halffull') {
+                            html = `
+                                <div class="price-row">
+                                    <span style="min-width:50px;">Half</span>
+                                    <div class="rupee-input-wrap">
+                                        <span class="rupee-prefix">₹</span>
+                                        <input type="number" id="priceHalf" placeholder="Half price" min="0" step="0.5" />
+                                    </div>
+                                </div>
+                                <div class="price-row">
+                                    <span style="min-width:50px;">Full</span>
+                                    <div class="rupee-input-wrap">
+                                        <span class="rupee-prefix">₹</span>
+                                        <input type="number" id="priceFull" placeholder="Full price" min="0" step="0.5" />
+                                    </div>
+                                </div>
+                            `;
+                        } else {
+                            html = `
+                                <div id="sizeRows">
+                                    <div class="price-row">
+                                        <input type="text" id="sizeLabel_0" placeholder="Size name" style="flex:1;min-width:80px;" />
+                                        <div class="rupee-input-wrap">
+                                            <span class="rupee-prefix">₹</span>
+                                            <input type="number" id="sizeValue_0" placeholder="Price" min="0" step="0.5" />
+                                        </div>
+                                        <button type="button" class="remove-btn" onclick="this.parentElement.remove()">✕</button>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn-secondary" style="margin-top:8px;" onclick="addSizeRow()">+ Add another size</button>
+                            `;
+                        }
+                        container.innerHTML = html;
+                    });
+                });
+
+                // Toggle switches
+                document.querySelectorAll('.toggle-switch').forEach(el => {
+                    el.addEventListener('click', function(e) {
+                        // prevent double trigger from inline onclick
+                    });
+                });
+
+                // Image upload
+                const fileInput = document.getElementById('itemImageFile');
+                fileInput.addEventListener('change', function(e) {
+                    const file = e.target.files[0];
+                    if (!file) return;
+                    if (!file.type.startsWith('image/')) { alert('Please select an image file.'); return; }
+                    if (file.size > 5 * 1024 * 1024) { alert('Image must be less than 5MB.'); return; }
+                    const reader = new FileReader();
+                    reader.onload = function(ev) {
+                        document.getElementById('itemImagePreview').src = ev.target.result;
+                        document.getElementById('itemImageData').value = ev.target.result;
+                        document.getElementById('imagePreviewContainer').style.display = 'block';
+                        document.getElementById('imagePreviewWrap').style.display = 'none';
+                        document.getElementById('imageUploadArea').classList.add('has-image');
+                    };
+                    reader.readAsDataURL(file);
+                });
+
+                // Click on upload area to trigger file input
+                document.getElementById('imageUploadArea').addEventListener('click', function(e) {
+                    if (e.target.closest('.preview-actions')) return;
+                    document.getElementById('itemImageFile').click();
+                });
+
+                // If there's already an image, show preview
+                const existingImage = document.getElementById('itemImageData').value;
+                if (existingImage) {
+                    document.getElementById('imagePreviewContainer').style.display = 'block';
+                    document.getElementById('imagePreviewWrap').style.display = 'none';
+                    document.getElementById('imageUploadArea').classList.add('has-image');
+                }
+
+                // Form submit
+                document.getElementById('itemForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const saveBtn = document.getElementById('saveItemBtn');
+                    const status = document.getElementById('saveStatus');
+
+                    // Validate
+                    let valid = true;
+                    const nameEn = document.getElementById('itemNameEn').value.trim();
+                    const nameHi = document.getElementById('itemNameHi').value.trim();
+                    const section = document.getElementById('itemSection').value;
+                    const type = document.getElementById('itemType').value;
+
+                    if (!nameEn) { document.getElementById('errNameEn').classList.add('visible');
+                        valid = false; } else { document.getElementById('errNameEn').classList.remove('visible'); }
+                    if (!nameHi) { document.getElementById('errNameHi').classList.add('visible');
+                        valid = false; } else { document.getElementById('errNameHi').classList.remove('visible'); }
+                    if (!section) { document.getElementById('errSection').classList.add('visible');
+                        valid = false; } else { document.getElementById('errSection').classList.remove('visible'); }
+
+                    // Validate price
+                    const pricingMode = document.querySelector('.pm-option.active');
+                    let pricing = [];
+                    if (pricingMode) {
+                        const mode = pricingMode.dataset.mode;
+                        if (mode === 'single') {
+                            const val = parseFloat(document.getElementById('priceSingle')?.value);
+                            if (val !== undefined && !isNaN(val) && val > 0) {
+                                pricing = [{ label_en: 'Price', label_hi: 'कीमत', value: val }];
+                            } else { valid = false;
+                                document.getElementById('errPrice').classList.add('visible'); }
+                        } else if (mode === 'halffull') {
+                            const half = parseFloat(document.getElementById('priceHalf')?.value);
+                            const full = parseFloat(document.getElementById('priceFull')?.value);
+                            if ((!isNaN(half) && half > 0) || (!isNaN(full) && full > 0)) {
+                                if (half > 0) pricing.push({ label_en: 'Half', label_hi: 'आधा', value: half });
+                                if (full > 0) pricing.push({ label_en: 'Full', label_hi: 'पूरा', value: full });
+                            } else { valid = false;
+                                document.getElementById('errPrice').classList.add('visible'); }
+                        } else {
+                            const rows = document.querySelectorAll('#sizeRows .price-row');
+                            rows.forEach(row => {
+                                const label = row.querySelector('input[type="text"]')?.value.trim();
+                                const val = parseFloat(row.querySelector('.rupee-input-wrap input')?.value);
+                                if (label && val > 0) {
+                                    pricing.push({ label_en: label, label_hi: label, value: val });
+                                }
+                            });
+                            if (pricing.length === 0) { valid = false;
+                                document.getElementById('errPrice').classList.add('visible'); }
+                        }
+                    }
+                    if (valid) document.getElementById('errPrice').classList.remove('visible');
+
+                    if (!valid) {
+                        status.className = 'save-status error';
+                        status.textContent = '❌ Please fill in all required fields.';
+                        status.style.display = 'block';
+                        return;
+                    }
+
+                    const descEn = document.getElementById('itemDescEn').value.trim();
+                    const descHi = document.getElementById('itemDescHi').value.trim();
+                    const image = document.getElementById('itemImageData').value;
+                    const available = document.getElementById('itemAvailable').value === '1';
+                    const bestseller = document.getElementById('itemBestseller').value === '1';
+                    const featured = document.getElementById('itemFeatured').value === '1';
+
+                    const data = {
+                        section_id: parseInt(section),
+                        name_en: nameEn,
+                        name_hi: nameHi,
+                        description_en: descEn,
+                        description_hi: descHi,
+                        type: type,
+                        image: image,
+                        available: available,
+                        bestseller: bestseller,
+                        featured: featured,
+                        pricing: pricing
+                    };
+
+                    saveBtn.textContent = '⏳ Saving...';
+                    saveBtn.disabled = true;
+                    status.className = 'save-status loading';
+                    status.textContent = '⏳ Saving dish...';
+                    status.style.display = 'block';
+
+                    setTimeout(() => {
+                        try {
+                            if (isEdit) {
+                                const idx = menuItems.findIndex(i => i.id === item.id);
+                                if (idx !== -1) {
+                                    menuItems[idx] = { ...menuItems[idx], ...data };
+                                }
+                            } else {
+                                data.id = Date.now();
+                                menuItems.push(data);
+                            }
+                            persistAll();
+                            status.className = 'save-status success';
+                            status.textContent = isEdit ? '✅ Dish updated successfully!' :
+                                '✅ Dish added successfully!';
+                            saveBtn.textContent = isEdit ? '💾 Save Changes' : '💾 Save Dish';
+                            saveBtn.disabled = false;
+                            setTimeout(() => {
+                                closeAdminModal();
+                                renderAdminDashboard();
+                                renderMenu();
+                                updateCustomerUI();
+                                showToast(isEdit ? '✅ Dish updated!' : '✅ Dish added!');
+                            }, 800);
+                        } catch (err) {
+                            status.className = 'save-status error';
+                            status.textContent = '❌ Error saving dish. Please try again.';
+                            saveBtn.textContent = isEdit ? '💾 Save Changes' : '💾 Save Dish';
+                            saveBtn.disabled = false;
+                        }
+                    }, 400);
+                });
+            }
+
+            // ---- Exposed admin functions ----
+            window.addItem = function() {
+                if (!authIsLoggedIn()) return;
+                openItemForm(null);
+            };
+
+            window.editItem = function(id) {
+                if (!authIsLoggedIn()) return;
+                const item = menuItems.find(i => i.id === id);
+                if (!item) { alert('Dish not found.'); return; }
+                openItemForm(item);
+            };
+
+            window.deleteItem = function(id) {
+                if (!authIsLoggedIn()) return;
+                if (!confirm('Delete this dish?')) return;
+                menuItems = menuItems.filter(i => i.id !== id);
+                persistAll();
+                renderAdminDashboard();
+                renderMenu();
+                showToast('Dish deleted.');
+            };
+
+            window.duplicateItem = function(id) {
+                if (!authIsLoggedIn()) return;
+                const item = menuItems.find(i => i.id === id);
+                if (!item) return;
+                const newItem = { ...item, id: Date.now(), name_en: item.name_en + ' (copy)', name_hi: item.name_hi +
+                        ' (प्रति)' };
+                menuItems.push(newItem);
+                persistAll();
+                renderAdminDashboard();
+                renderMenu();
+                showToast('Dish duplicated.');
+            };
+
+            window.toggleItemField = function(id, field) {
+                if (!authIsLoggedIn()) return;
+                const item = menuItems.find(i => i.id === id);
+                if (!item) return;
+                item[field] = !item[field];
+                persistAll();
+                renderAdminDashboard();
+                renderMenu();
+                showToast('Updated.');
+            };
+
+            window.addSection = function() {
+                if (!authIsLoggedIn()) return;
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay-inline open';
+                modal.id = 'adminEditModal';
+                modal.innerHTML = `
+                    <div class="modal-box-inline">
+                        <button class="close-modal" onclick="closeAdminModal()">✕</button>
+                        <h2>📂 Add Menu Category</h2>
+                        <p style="color:var(--text-muted);font-size:14px;margin-bottom:16px;">Sections are categories such as Main Course, Snacks, Drinks, Desserts, etc.</p>
+                        <form id="sectionForm">
+                            <div class="form-group">
+                                <label>Section Name *</label>
+                                <input type="text" id="sectionNameEn" placeholder="e.g. Main Course" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Hindi Section Name *</label>
+                                <input type="text" id="sectionNameHi" placeholder="e.g. मुख्य पाठ्यक्रम" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Sort Order</label>
+                                <input type="number" id="sectionSortOrder" value="${sections.length}" min="0" />
+                            </div>
+                            <div style="display:flex;gap:12px;margin-top:16px;">
+                                <button type="button" class="btn btn-secondary" onclick="closeAdminModal()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">+ Add Category</button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                document.getElementById('sectionForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name_en = document.getElementById('sectionNameEn').value.trim();
+                    const name_hi = document.getElementById('sectionNameHi').value.trim();
+                    if (!name_en || !name_hi) { alert('Please enter both names.'); return; }
+                    const key = name_en.toLowerCase().replace(/[^a-z0-9]/g, '_');
+                    if (sections.some(s => s.key === key)) { alert('A section with this name already exists.'); return; }
+                    const sort_order = parseInt(document.getElementById('sectionSortOrder').value) || sections.length;
+                    const newSec = { id: Date.now(), key, name_en, name_hi, sort_order, enabled: true };
+                    sections.push(newSec);
+                    persistAll();
+                    closeAdminModal();
+                    renderAdminDashboard();
+                    renderSectionNav();
+                    renderMenu();
+                    updateCustomerUI();
+                    showToast('Category "' + name_en + '" created!');
+                });
+            };
+
+            window.editSection = function(id) {
+                if (!authIsLoggedIn()) return;
+                const sec = sections.find(s => s.id === id);
+                if (!sec) return;
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay-inline open';
+                modal.id = 'adminEditModal';
+                modal.innerHTML = `
+                    <div class="modal-box-inline">
+                        <button class="close-modal" onclick="closeAdminModal()">✕</button>
+                        <h2>✏️ Edit Category</h2>
+                        <form id="sectionForm">
+                            <div class="form-group">
+                                <label>Section Name *</label>
+                                <input type="text" id="sectionNameEn" value="${escapeHtml(sec.name_en)}" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Hindi Section Name *</label>
+                                <input type="text" id="sectionNameHi" value="${escapeHtml(sec.name_hi)}" required />
+                            </div>
+                            <div class="form-group">
+                                <label>Sort Order</label>
+                                <input type="number" id="sectionSortOrder" value="${sec.sort_order || 0}" min="0" />
+                            </div>
+                            <div style="display:flex;gap:12px;margin-top:16px;">
+                                <button type="button" class="btn btn-secondary" onclick="closeAdminModal()">Cancel</button>
+                                <button type="submit" class="btn btn-primary">💾 Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+
+                document.getElementById('sectionForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const name_en = document.getElementById('sectionNameEn').value.trim();
+                    const name_hi = document.getElementById('sectionNameHi').value.trim();
+                    if (!name_en || !name_hi) { alert('Please enter both names.'); return; }
+                    const sort_order = parseInt(document.getElementById('sectionSortOrder').value) || 0;
+                    const idx = sections.findIndex(s => s.id === id);
+                    if (idx === -1) return;
+                    sections[idx] = { ...sections[idx], name_en, name_hi, sort_order };
+                    persistAll();
+                    closeAdminModal();
+                    renderAdminDashboard();
+                    renderSectionNav();
+                    renderMenu();
+                    updateCustomerUI();
+                    showToast('Category updated.');
+                });
+            };
+
+            window.deleteSection = function(id) {
+                if (!authIsLoggedIn()) return;
+                const itemsInSection = menuItems.filter(i => i.section_id === id);
+                if (itemsInSection.length) {
+                    if (!confirm(
+                            `This section has ${itemsInSection.length} dishes. Delete them or move them first?`))
+                        return;
+                    const otherSection = sections.find(s => s.id !== id && s.enabled);
+                    if (otherSection) {
+                        itemsInSection.forEach(i => i.section_id = otherSection.id);
+                    } else {
+                        menuItems = menuItems.filter(i => i.section_id !== id);
+                    }
+                }
+                sections = sections.filter(s => s.id !== id);
+                persistAll();
+                renderAdminDashboard();
+                renderSectionNav();
+                renderMenu();
+                showToast('Category deleted.');
+            };
+
+            window.toggleSectionEnabled = function(id) {
+                if (!authIsLoggedIn()) return;
+                const sec = sections.find(s => s.id === id);
+                if (!sec) return;
+                sec.enabled = !sec.enabled;
+                persistAll();
+                renderAdminDashboard();
+                renderSectionNav();
+                renderMenu();
+                showToast('Category toggled.');
+            };
+
+            window.closeAdminModal = function() {
+                const modal = document.querySelector('.modal-overlay-inline.open');
+                if (modal) modal.remove();
+            };
+
+            // ============================================================
+            // 16. EVENT BINDING & INIT
+            // ============================================================
+            function bindEvents() {
+                // Language
+                document.querySelectorAll('.lang-toggle button').forEach(btn => {
+                    btn.addEventListener('click', function() { setLanguage(this.dataset.lang); });
+                });
+
+                // Filters
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const filter = this.dataset.filter;
+                        if (filter === 'all') clearFilters();
+                        else toggleFilter(filter);
+                    });
+                });
+                document.getElementById('filterClear').addEventListener('click', clearFilters);
+
+                // Search
+                document.getElementById('searchToggle').addEventListener('click', openSearch);
+                document.getElementById('searchClose').addEventListener('click', closeSearch);
+                document.getElementById('searchInput').addEventListener('input', function() { performSearch(this
+                        .value); });
+                document.getElementById('searchInput').addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') closeSearch();
+                    if (e.key === 'Enter') {
+                        const firstResult = document.querySelector('#searchResults .result-item');
+                        if (firstResult) firstResult.click();
+                    }
+                });
+                document.getElementById('searchOverlay').addEventListener('click', function(e) {
+                    if (e.target === this) closeSearch();
+                });
+
+                // Modal
+                document.getElementById('modalClose').addEventListener('click', closeModal);
+                document.getElementById('modalOverlay').addEventListener('click', function(e) {
+                    if (e.target === this) closeModal();
+                });
+
+                // Scroll
+                document.getElementById('floatScrollTop').addEventListener('click', scrollToTop);
+                document.getElementById('scrollTopBtn').addEventListener('click', scrollToTop);
+                window.addEventListener('scroll', handleScroll);
+                handleScroll();
+
+                // Hero CTA
+                document.getElementById('heroExploreBtn').addEventListener('click', function() {
+                    const first = document.querySelector('.menu-section');
+                    if (first) first.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    else document.querySelector('.filter-bar').scrollIntoView({ behavior: 'smooth',
+                        block: 'start' });
+                });
+
+                // Contact float
+                document.getElementById('floatContact').addEventListener('click', function() {
+                    const info = document.querySelector('.restaurant-info');
+                    if (info) info.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+
+                // Map link
+                document.getElementById('mapLink').addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (settings.maps_url) window.open(settings.maps_url, '_blank');
+                });
+
+                // Hidden admin trigger
+                document.getElementById('logoBrand').addEventListener('click', handleAdminTap);
+
+                // Admin login
+                document.getElementById('adminLoginBtn').addEventListener('click', adminLoginHandler);
+                document.getElementById('adminPassword').addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter') document.getElementById('adminLoginBtn').click();
+                });
+                document.getElementById('closeAdminLogin').addEventListener('click', function() {
+                    document.getElementById('adminLoginOverlay').classList.remove('open');
+                });
+                document.getElementById('adminLoginOverlay').addEventListener('click', function(e) {
+                    if (e.target === this) this.classList.remove('open');
+                });
+                document.getElementById('togglePassword').addEventListener('click', function() {
+                    const input = document.getElementById('adminPassword');
+                    const type = input.getAttribute('type') === 'password' ? 'text' : 'password';
+                    input.setAttribute('type', type);
+                    this.textContent = type === 'password' ? '👁' : '👁‍🗨';
+                });
+
+                // Admin logout
+                document.getElementById('adminLogoutBtn').addEventListener('click', function() {
+                    if (confirm('Logout?')) {
+                        authLogout();
+                        document.getElementById('adminDashboard').classList.remove('open');
+                        document.getElementById('adminStatus').textContent = '';
+                        document.querySelectorAll('.modal-overlay-inline.open').forEach(el => el.remove());
+                        document.querySelectorAll('.modal-overlay-inline').forEach(el => el.remove());
+                        showToast('Logged out.');
+                    }
+                });
+
+                // Admin nav
+                document.getElementById('adminNav').addEventListener('click', function(e) {
+                    const target = e.target.closest('button');
+                    if (!target) return;
+                    const view = target.dataset.view;
+                    document.querySelectorAll('.admin-nav button').forEach(b => b.classList.remove('active'));
+                    target.classList.add('active');
+                    document.querySelectorAll('.admin-view').forEach(v => v.classList.remove('active'));
+                    const map = { overview: 'viewOverview', menu: 'viewMenu', sections: 'viewSections',
+                        settings: 'viewSettings', security: 'viewSecurity' };
+                    const el = document.getElementById(map[view]);
+                    if (el) el.classList.add('active');
+                    if (view === 'menu') renderAdminMenu();
+                    if (view === 'sections') renderAdminSections();
+                    if (view === 'settings') renderAdminSettings();
+                });
+
+                // Add Item button
+                document.getElementById('addItemBtn').addEventListener('click', function() {
+                    if (!authIsLoggedIn()) return;
+                    window.addItem();
+                });
+
+                // Add Section button
+                document.getElementById('addSectionBtn').addEventListener('click', function() {
+                    if (!authIsLoggedIn()) return;
+                    window.addSection();
+                });
+
+                // Settings form
+                document.getElementById('settingsForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const data = {
+                        name: document.getElementById('settingsName').value,
+                        tagline: document.getElementById('settingsTagline').value,
+                        description: document.getElementById('settingsDescription').value,
+                        address: document.getElementById('settingsAddress').value,
+                        hours: document.getElementById('settingsHours').value,
+                        phone: document.getElementById('settingsPhone').value,
+                        email: document.getElementById('settingsEmail').value,
+                        maps_url: document.getElementById('settingsMaps').value,
+                        instagram: document.getElementById('settingsInstagram').value,
+                        facebook: document.getElementById('settingsFacebook').value,
+                        youtube: document.getElementById('settingsYoutube').value,
+                        citycart: document.getElementById('settingsCitycart').value,
+                        pocketmall: document.getElementById('settingsPocketmall').value,
+                        goride: document.getElementById('settingsGoride').value
+                    };
+                    settings = data;
+                    persistAll();
+                    document.getElementById('settingsMessage').textContent = '✅ Settings saved!';
+                    setTimeout(() => { document.getElementById('settingsMessage').textContent = ''; }, 3000);
+                    updateCustomerUI();
+                    renderAdminSettings();
+                    showToast('Settings saved.');
+                });
+
+                // Security form
+                document.getElementById('securityForm').addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const currentUser = document.getElementById('currentUsername').value.trim();
+                    const newUser = document.getElementById('newUsername').value.trim();
+                    const currentPass = document.getElementById('currentPassword').value;
+                    const newPass = document.getElementById('newPassword').value;
+                    const confirm = document.getElementById('confirmPassword').value;
+                    const msg = document.getElementById('securityMessage');
+
+                    if (currentUser !== adminCreds.username) {
+                        msg.textContent = '❌ Current username is incorrect.';
+                        msg.style.color = '#b33a3a';
+                        return;
+                    }
+                    if (newPass || confirm) {
+                        if (currentPass !== adminCreds.password) {
+                            msg.textContent = '❌ Current password is incorrect.';
+                            msg.style.color = '#b33a3a';
+                            return;
+                        }
+                        if (newPass !== confirm) {
+                            msg.textContent = '❌ New passwords do not match.';
+                            msg.style.color = '#b33a3a';
+                            return;
+                        }
+                        if (newPass.length < 4) {
+                            msg.textContent = '❌ Password must be at least 4 characters.';
+                            msg.style.color = '#b33a3a';
+                            return;
+                        }
+                    }
+                    const updatedUser = newUser || adminCreds.username;
+                    const updatedPass = newPass || adminCreds.password;
+                    authUpdateCredentials(updatedUser, updatedPass);
+                    msg.textContent = '✅ Account updated successfully!';
+                    msg.style.color = 'var(--gold)';
+                    document.getElementById('currentUsername').value = updatedUser;
+                    document.getElementById('newUsername').value = '';
+                    document.getElementById('currentPassword').value = '';
+                    document.getElementById('newPassword').value = '';
+                    document.getElementById('confirmPassword').value = '';
+                    if (adminSession) adminSession.username = updatedUser;
+                    document.getElementById('adminStatus').textContent = 'Logged in as ' + updatedUser;
+                    showToast('Account updated.');
+                });
+
+                // Keyboard: Escape close admin modal
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape') {
+                        const modal = document.querySelector('.modal-overlay-inline.open');
+                        if (modal) modal.remove();
+                    }
+                });
+            }
+
+            // ============================================================
+            // 17. INIT
+            // ============================================================
+            function init() {
+                // Migrate old data: remove Hinglish fields
+                menuItems.forEach(item => {
+                    delete item.name_hing;
+                    delete item.description_hing;
+                    if (item.pricing) {
+                        item.pricing.forEach(p => delete p.label_hing);
+                    }
+                });
+                sections.forEach(s => delete s.name_hing);
+                // Remove Hinglish from UI strings if present
+                // (already removed from UI_STRINGS)
+
+                updateCustomerUI();
+                bindEvents();
+
+                if (authIsLoggedIn()) {
+                    document.getElementById('adminDashboard').classList.add('open');
+                    document.getElementById('adminStatus').textContent = 'Logged in as ' + (adminSession.username ||
+                        'Admin');
+                    renderAdminDashboard();
+                }
+
+                console.log('✅ AUNTY KI RASOI — UX/UI improvement pass complete.');
+                console.log('ℹ️  Demo credentials: ' + adminCreds.username + ' / ' + adminCreds.password);
+                console.log('ℹ️  Data stored in localStorage. This is a demo/local authentication system.');
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
+
+</body>
+</html>
