@@ -69,35 +69,29 @@
 
     currentLang = lang;
 
-    // Visible UI strings
     document.querySelectorAll('[data-i18n]').forEach(function (el) {
       var key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.textContent = dict[key];
     });
 
-      // Placeholders
       document.querySelectorAll('[data-i18n-placeholder]').forEach(function (el) {
         var key = el.getAttribute('data-i18n-placeholder');
         if (dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
       });
 
-        // Aria labels
         document.querySelectorAll('[data-i18n-aria]').forEach(function (el) {
           var key = el.getAttribute('data-i18n-aria');
           if (dict[key] !== undefined) el.setAttribute('aria-label', dict[key]);
         });
 
-          // Lang buttons
           document.querySelectorAll('.lang-btn').forEach(function (btn) {
             var isActive = btn.getAttribute('data-lang') === lang;
             btn.classList.toggle('is-active', isActive);
             btn.setAttribute('aria-pressed', String(isActive));
           });
 
-          // Doc lang attribute
           document.documentElement.lang = lang === 'hindi' ? 'hi' : 'en';
 
-          // If the modal is open, refresh its translated labels
           refreshModalTranslations();
   }
 
@@ -109,7 +103,10 @@
   });
 
   /* ------------------------------------------------------------
-   * Search — matches dish name AND description
+   * Search — matches dish name AND description.
+   * Per-row searchable text and section references are pre-cached
+   * at init so keystrokes don't re-read attributes or re-query
+   * the DOM per section.
    * ------------------------------------------------------------ */
   var searchInput = document.getElementById('menu-search');
   var clearBtn = document.getElementById('clear-search');
@@ -117,9 +114,19 @@
   var allRows = Array.prototype.slice.call(document.querySelectorAll('.dish-row'));
   var allSections = Array.prototype.slice.call(document.querySelectorAll('.menu-section'));
 
+  var rowSearchText = [];
+  var rowSections = [];
+
   function normalize(str) {
     return (str || '').toLowerCase().trim();
   }
+
+  allRows.forEach(function (row) {
+    var name = normalize(row.getAttribute('data-name') || '');
+    var desc = normalize(row.getAttribute('data-desc') || '');
+    rowSearchText.push(name + ' ' + desc);
+    rowSections.push(row.closest('.menu-section'));
+  });
 
   function runSearch() {
     if (!searchInput) return;
@@ -137,21 +144,23 @@
     if (clearBtn) clearBtn.hidden = false;
 
     var anyMatch = false;
+    var sectionHasVisible = {};
 
-    allRows.forEach(function (row) {
-      var name = normalize(row.getAttribute('data-name') || row.textContent);
-      var desc = normalize(row.getAttribute('data-desc') || '');
-      var match = name.indexOf(query) !== -1 || desc.indexOf(query) !== -1;
-      row.hidden = !match;
-      if (match) anyMatch = true;
+    for (var i = 0; i < allRows.length; i++) {
+      var match = rowSearchText[i].indexOf(query) !== -1;
+      allRows[i].hidden = !match;
+      if (match) {
+        anyMatch = true;
+        var sec = rowSections[i];
+        if (sec) sectionHasVisible[sec.id] = true;
+      }
+    }
+
+    allSections.forEach(function (sec) {
+      sec.hidden = !sectionHasVisible[sec.id];
     });
 
-      allSections.forEach(function (sec) {
-        var visibleRows = sec.querySelectorAll('.dish-row:not([hidden])');
-        sec.hidden = visibleRows.length === 0;
-      });
-
-      if (noResults) noResults.hidden = anyMatch;
+    if (noResults) noResults.hidden = anyMatch;
   }
 
   if (searchInput) searchInput.addEventListener('input', runSearch);
@@ -171,9 +180,6 @@
     img.addEventListener('error', function () {
       var wrap = img.parentNode;
       if (wrap && wrap.classList) wrap.classList.add('img-missing');
-      if (window.console && console.warn) {
-        console.warn('[Aunty Ki Rasoi] Dish image failed to load:', img.getAttribute('src'));
-      }
     });
   }
 
@@ -183,6 +189,8 @@
    * Dish modal
    * ------------------------------------------------------------ */
   var modal = document.getElementById('dish-modal');
+  var modalCard = modal ? modal.querySelector('.dish-modal-card') : null;
+  var modalCloseBtn = modal ? modal.querySelector('.dish-modal-close') : null;
   var modalImage = document.getElementById('dish-modal-image');
   var modalImageWrap = modalImage ? modalImage.parentNode : null;
   var modalTitle = document.getElementById('dish-modal-title');
@@ -190,6 +198,27 @@
   var modalPrices = document.getElementById('dish-modal-prices');
 
   var lastFocusedElement = null;
+  var savedScrollY = 0;
+
+  /* --- Scroll lock helpers -----------------------------------
+   * Locks html + body with overflow:hidden. This preserves scroll
+   * position natively on modern browsers and avoids the iOS Safari
+   * nested-scroll bugs caused by position:fixed on body.
+   * savedScrollY is kept as a safety net for browsers that reset.
+   * ------------------------------------------------------------ */
+  function lockScroll() {
+    savedScrollY = window.scrollY || window.pageYOffset || 0;
+    document.documentElement.classList.add('modal-open');
+    document.body.classList.add('modal-open');
+  }
+
+  function unlockScroll() {
+    document.documentElement.classList.remove('modal-open');
+    document.body.classList.remove('modal-open');
+    if (window.scrollY !== savedScrollY) {
+      window.scrollTo(0, savedScrollY);
+    }
+  }
 
   function makePriceItem(label, value, isFull) {
     var el = document.createElement('div');
@@ -257,29 +286,28 @@
       if (imageSrc) {
         modalImage.onerror = function () {
           if (modalImageWrap) modalImageWrap.classList.add('img-missing');
-          if (window.console && console.warn) {
-            console.warn('[Aunty Ki Rasoi] Modal image failed to load:', imageSrc);
-          }
         };
-        modalImage.src = imageSrc;
-        modalImage.alt = name;
+          modalImage.src = imageSrc;
+          modalImage.alt = name;
       } else {
-        // No photo for this dish — never set an empty src (junk request)
         modalImage.removeAttribute('src');
         modalImage.alt = '';
         if (modalImageWrap) modalImageWrap.classList.add('img-missing');
       }
     }
 
-    // Show
     lastFocusedElement = document.activeElement;
+
+    // Lock background scroll before showing the modal.
+    lockScroll();
+
     modal.hidden = false;
     modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('modal-open');
 
-    // Move focus to close button
-    var closeBtn = modal.querySelector('.dish-modal-close');
-    if (closeBtn) closeBtn.focus();
+    // Reset modal card scroll position for each new dish.
+    if (modalCard) modalCard.scrollTop = 0;
+
+    if (modalCloseBtn) modalCloseBtn.focus();
   }
 
   function refreshModalTranslations() {
@@ -294,7 +322,9 @@
     if (!modal || modal.hidden) return;
     modal.hidden = true;
     modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('modal-open');
+
+    unlockScroll();
+
     modal._currentRow = null;
     if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
       lastFocusedElement.focus();
@@ -302,15 +332,18 @@
     lastFocusedElement = null;
   }
 
-  // Wire up all dish trigger buttons
-  document.querySelectorAll('.dish-trigger').forEach(function (trigger) {
-    trigger.addEventListener('click', function () {
+  // Event delegation for dish triggers
+  var menuMain = document.getElementById('menu');
+  if (menuMain) {
+    menuMain.addEventListener('click', function (e) {
+      var trigger = e.target.closest('.dish-trigger');
+      if (!trigger) return;
       var row = trigger.closest('.dish-row');
       if (!row || !modal) return;
       modal._currentRow = row;
       openModalFromRow(row);
     });
-  });
+  }
 
   // Close handlers
   if (modal) {
@@ -318,7 +351,6 @@
       el.addEventListener('click', closeModal);
     });
 
-    // Escape key (global, since focus lives inside the modal)
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && !modal.hidden) closeModal();
     });
@@ -341,7 +373,9 @@
   }
 
   /* ------------------------------------------------------------
-   * Scrollspy — highlight active category pill while scrolling
+   * Scrollspy — highlight active category pill while scrolling.
+   * Only toggles the active class; horizontal centering only
+   * happens on an explicit category tap (scrollNavToActive).
    * ------------------------------------------------------------ */
   var catLinks = Array.prototype.slice.call(document.querySelectorAll('.category-list a'));
   var catSections = catLinks
@@ -350,15 +384,25 @@
 
   function setActiveCat(id) {
     catLinks.forEach(function (a) {
-      var active = a.getAttribute('href') === '#' + id;
-      a.classList.toggle('is-active', active);
-      if (active && typeof a.scrollIntoView === 'function') {
-        a.scrollIntoView({
-          block: 'nearest',
-          inline: 'center',
-          behavior: prefersReduced ? 'auto' : 'smooth'
-        });
+      a.classList.toggle('is-active', a.getAttribute('href') === '#' + id);
+    });
+  }
+
+  function scrollNavToActive(id) {
+    var activeLink = null;
+    for (var i = 0; i < catLinks.length; i++) {
+      if (catLinks[i].getAttribute('href') === '#' + id) {
+        activeLink = catLinks[i];
+        break;
       }
+    }
+    if (!activeLink) return;
+    var nav = activeLink.closest('.category-list');
+    if (!nav) return;
+    var targetLeft = activeLink.offsetLeft - (nav.clientWidth / 2) + (activeLink.clientWidth / 2);
+    nav.scrollTo({
+      left: targetLeft,
+      behavior: prefersReduced ? 'auto' : 'smooth'
     });
   }
 
@@ -372,10 +416,12 @@
   }
 
   /* ------------------------------------------------------------
-   * Reveal on scroll (skipped entirely for reduced-motion users)
+   * Reveal on scroll (skipped entirely for reduced-motion users).
+   * Only section-level elements are observed — this keeps the
+   * observer workload tiny (~6 targets instead of ~60).
    * ------------------------------------------------------------ */
   if ('IntersectionObserver' in window && !prefersReduced) {
-    var revealEls = document.querySelectorAll('.menu-section, .contact-section, .site-footer, .dish-row');
+    var revealEls = document.querySelectorAll('.menu-section, .contact-section, .site-footer');
     revealEls.forEach(function (el) { el.classList.add('reveal'); });
     var revealObserver = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -406,10 +452,15 @@
       if (!target) return;
 
       e.preventDefault();
-      target.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' });
+      target.scrollIntoView({
+        behavior: prefersReduced ? 'auto' : 'smooth',
+        block: 'start'
+      });
 
-      // Reflect active pill immediately on click
-      if (link.closest('.category-list')) setActiveCat(id.slice(1));
+      if (link.closest('.category-list')) {
+        setActiveCat(id.slice(1));
+        scrollNavToActive(id.slice(1));
+      }
 
       try {
         if (history.pushState) history.pushState(null, '', id);
