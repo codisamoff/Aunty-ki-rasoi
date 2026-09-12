@@ -33,7 +33,6 @@
 }
 
 html {
-    scroll-behavior: smooth;
     scroll-padding-top: calc(var(--header-h) + var(--nav-h) + 10px);
     -webkit-text-size-adjust: 100%;
 }
@@ -54,7 +53,14 @@ body {
     min-height: 100vh;
 }
 
-body.modal-open { overflow: hidden; }
+/* Robust scroll lock: locks both root scrollers without removing body from flow.
+ *  Relies on the modern fact that html{overflow:hidden} preserves scrollY on
+ *  all current Android Chrome / iOS Safari versions; JS keeps a saved value
+ *  as a safety net. */
+html.modal-open,
+body.modal-open {
+    overflow: hidden;
+}
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -94,9 +100,11 @@ ul { list-style: none; }
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(14, 11, 7, 0.94);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    /* Solid-ish background instead of backdrop-filter.
+     *      Visual delta from the previous blurred look is small (94% → 98% opacity);
+     *      removing the blur eliminates a per-frame compositor pass at the top of
+     *      the viewport that hurts low-end Android scroll smoothness. */
+    background: rgba(14, 11, 7, 0.98);
     border-bottom: 1px solid var(--gold-line);
 }
 
@@ -344,11 +352,10 @@ ul { list-style: none; }
 /* ===== CATEGORY NAV ===== */
 .category-nav {
     position: sticky;
-    top: var(--header-h); /* was hardcoded 57px — overlapped the header */
+    top: var(--header-h);
     z-index: 40;
-    background: rgba(20, 16, 11, 0.96);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    /* Same reasoning as .site-header — no backdrop-filter. */
+    background: rgba(20, 16, 11, 0.99);
     border-bottom: 1px solid var(--gold-line);
 }
 
@@ -392,7 +399,6 @@ ul { list-style: none; }
     color: var(--black);
     border-color: var(--gold);
 }
-/* Scrollspy active state */
 .category-list a.is-active {
     background: linear-gradient(180deg, var(--gold-soft), var(--gold));
     color: var(--black);
@@ -526,7 +532,7 @@ min-width: 0;
 /* --- Dish row --- */
 .dish-row {
     border-bottom: 1px solid var(--gold-faint);
-    transition: background 0.15s ease, opacity 0.45s ease, transform 0.45s ease;
+    transition: background 0.15s ease;
     position: relative;
 }
 .dish-row::before {
@@ -598,9 +604,7 @@ min-width: 0;
     object-fit: cover;
     object-position: center;
     display: block;
-    transition: transform 0.35s ease;
 }
-.dish-row:hover .dish-thumb img { transform: scale(1.08); }
 
 .thumb-fallback {
     display: none;
@@ -776,12 +780,17 @@ min-width: 0;
 /* ===== DISH MODAL ===== */
 .dish-modal {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;      /* fallback */
+    height: 100dvh;     /* modern: tracks visible viewport */
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    overflow: hidden;
 }
 
 .dish-modal[hidden] { display: none; }
@@ -789,15 +798,8 @@ min-width: 0;
 .dish-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(6, 4, 2, 0.82);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(6, 4, 2, 0.88);
     cursor: pointer;
-    animation: backdrop-in 0.25s ease;
-}
-@keyframes backdrop-in {
-    from { opacity: 0; }
-    to   { opacity: 1; }
 }
 
 .dish-modal-card {
@@ -805,8 +807,11 @@ min-width: 0;
     z-index: 1;
     width: 100%;
     max-width: 460px;
-    max-height: calc(100vh - 2rem);
-    overflow-y: auto;
+    max-height: 100%;           /* of the padded modal container */
+    overflow-y: auto;           /* single scroll container */
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
     background:
     radial-gradient(ellipse at 50% 0%, rgba(201, 162, 74, 0.12), transparent 55%),
     var(--charcoal);
@@ -816,13 +821,7 @@ min-width: 0;
     0 0 0 4px var(--black),
     0 0 0 5px var(--gold-line),
     0 30px 60px rgba(0, 0, 0, 0.6);
-    animation: modal-in 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     padding: 1rem 1rem 1.25rem;
-}
-
-@keyframes modal-in {
-    from { opacity: 0; transform: translateY(14px) scale(0.98); }
-    to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .dish-modal-close {
