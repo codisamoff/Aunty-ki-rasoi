@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Aunty Ki Rasoi | Home Cooked Indian Food</title>
+  <meta name="description" content="Aunty Ki Rasoi - Home Cooked Indian Food. Digital QR menu with Sabzi, Roti, Naan, Rice and Raita." />
+  <meta name="theme-color" content="#0e0b07" />
+  <meta property="og:title" content="Aunty Ki Rasoi | Home Cooked Indian Food" />
+  <meta property="og:description" content="Digital QR menu - Sabzi, Roti, Naan, Rice, Raita." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="assets/logo.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#menu">Skip to menu</a>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="Aunty Ki Rasoi logo" class="brand-logo" width="52" height="52" />
+        <div class="brand-text">
+          <span class="brand-name">Aunty Ki Rasoi</span>
+          <span class="brand-tagline" data-i18n="tagline">Home Cooked Indian Food</span>
+        </div>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="Language toggle">
+        <button type="button" class="lang-btn is-active" data-lang="hinglish" aria-pressed="true">HINGLISH</button>
+        <button type="button" class="lang-btn" data-lang="hindi" aria-pressed="false">हिंदी</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" aria-label="Restaurant brand">
+    <div class="hero-ornament hero-ornament-top" aria-hidden="true">
+      <span class="orn-line"></span>
+      <span class="orn-diamond"></span>
+      <span class="orn-line"></span>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-logo-frame">
+        <img src="assets/logo.png" alt="Aunty Ki Rasoi" class="hero-logo" width="150" height="150" />
+      </div>
+      <h1 class="hero-title">Aunty Ki Rasoi</h1>
+      <div class="hero-divider" aria-hidden="true">
+        <span class="div-line"></span>
+        <span class="div-ornament">❖</span>
+        <span class="div-line"></span>
+      </div>
+      <p class="hero-tagline" data-i18n="tagline">Home Cooked Indian Food</p>
+      <a href="#menu" class="btn btn-primary" data-i18n="viewMenu">View Menu</a>
+    </div>
+    <div class="hero-ornament hero-ornament-bottom" aria-hidden="true">
+      <span class="orn-line"></span>
+      <span class="orn-diamond"></span>
+      <span class="orn-line"></span>
+    </div>
+  </section>
+
+  <nav class="category-nav" aria-label="Menu categories">
+    <ul class="category-list">
+      <li><a href="#sabzi" data-i18n="catSabzi">Sabzi</a></li>
+      <li><a href="#roti" data-i18n="catRoti">Roti / Naan</a></li>
+      <li><a href="#rice" data-i18n="catRice">Rice</a></li>
+      <li><a href="#raita" data-i18n="catRaita">Raita</a></li>
+    </ul>
+  </nav>
+
+  <main id="menu" class="menu-main">
+    <div class="search-wrap">
+      <span class="search-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </span>
+      <label for="menu-search" class="visually-hidden" data-i18n="searchLabel">Search menu</label>
+      <input id="menu-search" type="search" placeholder="Search menu…" data-i18n-placeholder="searchPlaceholder" autocomplete="off" />
+      <button type="button" id="clear-search" class="clear-search" aria-label="Clear search" hidden>&times;</button>
+    </div>
+    <p id="no-results" class="no-results" hidden data-i18n="noResults">No matching items found.</p>
+
+    <!-- SABZI -->
+    <section id="sabzi" class="menu-section" aria-labelledby="sabzi-title">
+      <header class="section-header">
+        <span class="section-ornament" aria-hidden="true">❖</span>
+        <h2 id="sabzi-title" class="section-title">
+          <span data-i18n="catSabzi">Sabzi</span>
+        </h2>
+        <span class="section-rule" aria-hidden="true"></span>
+      </header>
+      <p class="section-note" data-i18n="halfFullNote">Half &amp; Full portions available</p>
+
+      <ul class="dish-list">
+        <li class="dish-row has-halffull" data-name="Matar Paneer">
+          <span class="dish-thumb"><img src="assets/dishes/matar-paneer.jpg" alt="Matar Paneer" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Matar Paneer</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹130</b></span><span class="full"><i>Full</i><b>₹240</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Shahi Paneer">
+          <span class="dish-thumb"><img src="assets/dishes/shahi-paneer.jpg" alt="Shahi Paneer" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Shahi Paneer</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹140</b></span><span class="full"><i>Full</i><b>₹260</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Kadhai Paneer">
+          <span class="dish-thumb"><img src="assets/dishes/kadhai-paneer.jpg" alt="Kadhai Paneer" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Kadhai Paneer</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹150</b></span><span class="full"><i>Full</i><b>₹280</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Paneer Butter Masala">
+          <span class="dish-thumb"><img src="assets/dishes/paneer-butter-masala.jpg" alt="Paneer Butter Masala" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Paneer Butter Masala</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹160</b></span><span class="full"><i>Full</i><b>₹300</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Palak Paneer">
+          <span class="dish-thumb"><img src="assets/dishes/palak-paneer.jpg" alt="Palak Paneer" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Palak Paneer</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹130</b></span><span class="full"><i>Full</i><b>₹250</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Handi Paneer">
+          <span class="dish-thumb"><img src="assets/dishes/handi-paneer.jpg" alt="Handi Paneer" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Handi Paneer</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹160</b></span><span class="full"><i>Full</i><b>₹300</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Mix Veg">
+          <span class="dish-thumb"><img src="assets/dishes/mix-veg.jpg" alt="Mix Veg" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Mix Veg</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹130</b></span><span class="full"><i>Full</i><b>₹240</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Kashmiri Dal Makhani">
+          <span class="dish-thumb"><img src="assets/dishes/kashmiri-dal-makhani.jpg" alt="Kashmiri Dal Makhani" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Kashmiri Dal Makhani</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹150</b></span><span class="full"><i>Full</i><b>₹280</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Dal Makhani">
+          <span class="dish-thumb"><img src="assets/dishes/dal-makhani.jpg" alt="Dal Makhani" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Dal Makhani</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹130</b></span><span class="full"><i>Full</i><b>₹260</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Dal Tadka">
+          <span class="dish-thumb"><img src="assets/dishes/dal-tadka.jpg" alt="Dal Tadka" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Dal Tadka</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹120</b></span><span class="full"><i>Full</i><b>₹240</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Dum Aloo">
+          <span class="dish-thumb"><img src="assets/dishes/dum-aloo.jpg" alt="Dum Aloo" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Dum Aloo</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹180</b></span><span class="full"><i>Full</i><b>₹320</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Malai Kofta">
+          <span class="dish-thumb"><img src="assets/dishes/malai-kofta.jpg" alt="Malai Kofta" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Malai Kofta</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹180</b></span><span class="full"><i>Full</i><b>₹340</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Chole Paneer">
+          <span class="dish-thumb"><img src="assets/dishes/chole-paneer.jpg" alt="Chole Paneer" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Chole Paneer</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹130</b></span><span class="full"><i>Full</i><b>₹250</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Chana Masala">
+          <span class="dish-thumb"><img src="assets/dishes/chana-masala.jpg" alt="Chana Masala" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Chana Masala</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹120</b></span><span class="full"><i>Full</i><b>₹220</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Dry Masala">
+          <span class="dish-thumb"><img src="assets/dishes/dry-masala.jpg" alt="Dry Masala" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Dry Masala</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹140</b></span><span class="full"><i>Full</i><b>₹260</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Jeera Aloo">
+          <span class="dish-thumb"><img src="assets/dishes/jeera-aloo.jpg" alt="Jeera Aloo" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Jeera Aloo</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹120</b></span><span class="full"><i>Full</i><b>₹220</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Aloo Matar">
+          <span class="dish-thumb"><img src="assets/dishes/aloo-matar.jpg" alt="Aloo Matar" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Aloo Matar</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹120</b></span><span class="full"><i>Full</i><b>₹220</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Urad Rajma">
+          <span class="dish-thumb"><img src="assets/dishes/urad-rajma.jpg" alt="Urad Rajma" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Urad Rajma</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹120</b></span><span class="full"><i>Full</i><b>₹240</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Chole">
+          <span class="dish-thumb"><img src="assets/dishes/chole.jpg" alt="Chole" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Chole</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹120</b></span><span class="full"><i>Full</i><b>₹240</b></span></span>
+        </li>
+        <li class="dish-row has-halffull" data-name="Shahi Anda Curry">
+          <span class="dish-thumb"><img src="assets/dishes/shahi-anda-curry.jpg" alt="Shahi Anda Curry" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Shahi Anda Curry</span>
+          <span class="dish-prices"><span class="half"><i>Half</i><b>₹140</b></span><span class="full"><i>Full</i><b>₹280</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Extra Gravy">
+          <span class="dish-thumb"><img src="assets/dishes/extra-gravy.jpg" alt="Extra Gravy" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Extra Gravy</span>
+          <span class="dish-prices"><span class="single"><b>₹50</b></span></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ROTI / NAAN -->
+    <section id="roti" class="menu-section" aria-labelledby="roti-title">
+      <header class="section-header">
+        <span class="section-ornament" aria-hidden="true">❖</span>
+        <h2 id="roti-title" class="section-title"><span data-i18n="catRoti">Roti / Naan</span></h2>
+        <span class="section-rule" aria-hidden="true"></span>
+      </header>
+      <ul class="dish-list">
+        <li class="dish-row single-price" data-name="Tandoori Roti">
+          <span class="dish-thumb"><img src="assets/dishes/tandoori-roti.jpg" alt="Tandoori Roti" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Tandoori Roti</span>
+          <span class="dish-prices"><span class="single"><b>₹10</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Tandoori Butter Roti">
+          <span class="dish-thumb"><img src="assets/dishes/tandoori-butter-roti.jpg" alt="Tandoori Butter Roti" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Tandoori Butter Roti</span>
+          <span class="dish-prices"><span class="single"><b>₹15</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Tandoori Pyaaz Roti">
+          <span class="dish-thumb"><img src="assets/dishes/tandoori-pyaaz-roti.jpg" alt="Tandoori Pyaaz Roti" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Tandoori Pyaaz Roti</span>
+          <span class="dish-prices"><span class="single"><b>₹20</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Plain Naan">
+          <span class="dish-thumb"><img src="assets/dishes/plain-naan.jpg" alt="Plain Naan" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Plain Naan</span>
+          <span class="dish-prices"><span class="single"><b>₹50</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Butter Naan">
+          <span class="dish-thumb"><img src="assets/dishes/butter-naan.jpg" alt="Butter Naan" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Butter Naan</span>
+          <span class="dish-prices"><span class="single"><b>₹60</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Garlic Naan">
+          <span class="dish-thumb"><img src="assets/dishes/garlic-naan.jpg" alt="Garlic Naan" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Garlic Naan</span>
+          <span class="dish-prices"><span class="single"><b>₹70</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Missi Roti">
+          <span class="dish-thumb"><img src="assets/dishes/missi-roti.jpg" alt="Missi Roti" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Missi Roti</span>
+          <span class="dish-prices"><span class="single"><b>₹40</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Missi Pyaaz Roti">
+          <span class="dish-thumb"><img src="assets/dishes/missi-pyaaz-roti.jpg" alt="Missi Pyaaz Roti" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Missi Pyaaz Roti</span>
+          <span class="dish-prices"><span class="single"><b>₹50</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Stuffed Naan">
+          <span class="dish-thumb"><img src="assets/dishes/stuffed-naan.jpg" alt="Stuffed Naan" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Stuffed Naan</span>
+          <span class="dish-prices"><span class="single"><b>₹80</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Stuffed Paratha">
+          <span class="dish-thumb"><img src="assets/dishes/stuffed-paratha.jpg" alt="Stuffed Paratha" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Stuffed Paratha</span>
+          <span class="dish-prices"><span class="single"><b>₹70</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Paneer Paratha">
+          <span class="dish-thumb"><img src="assets/dishes/paneer-paratha.jpg" alt="Paneer Paratha" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Paneer Paratha</span>
+          <span class="dish-prices"><span class="single"><b>₹100</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Laccha Paratha">
+          <span class="dish-thumb"><img src="assets/dishes/laccha-paratha.jpg" alt="Laccha Paratha" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Laccha Paratha</span>
+          <span class="dish-prices"><span class="single"><b>₹50</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Mirchi Paratha">
+          <span class="dish-thumb"><img src="assets/dishes/mirchi-paratha.jpg" alt="Mirchi Paratha" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Mirchi Paratha</span>
+          <span class="dish-prices"><span class="single"><b>₹50</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Masala Roti">
+          <span class="dish-thumb"><img src="assets/dishes/masala-roti.jpg" alt="Masala Roti" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Masala Roti</span>
+          <span class="dish-prices"><span class="single"><b>₹40</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Paneer Naan">
+          <span class="dish-thumb"><img src="assets/dishes/paneer-naan.jpg" alt="Paneer Naan" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Paneer Naan</span>
+          <span class="dish-prices"><span class="single"><b>₹130</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Tikona Paratha">
+          <span class="dish-thumb"><img src="assets/dishes/tikona-paratha.jpg" alt="Tikona Paratha" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Tikona Paratha</span>
+          <span class="dish-prices"><span class="single"><b>₹30</b></span></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- RICE -->
+    <section id="rice" class="menu-section" aria-labelledby="rice-title">
+      <header class="section-header">
+        <span class="section-ornament" aria-hidden="true">❖</span>
+        <h2 id="rice-title" class="section-title"><span data-i18n="catRice">Rice</span></h2>
+        <span class="section-rule" aria-hidden="true"></span>
+      </header>
+      <ul class="dish-list">
+        <li class="dish-row single-price" data-name="Plain Rice">
+          <span class="dish-thumb"><img src="assets/dishes/plain-rice.jpg" alt="Plain Rice" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Plain Rice</span>
+          <span class="dish-prices"><span class="single"><b>₹90</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Jeera Rice">
+          <span class="dish-thumb"><img src="assets/dishes/jeera-rice.jpg" alt="Jeera Rice" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Jeera Rice</span>
+          <span class="dish-prices"><span class="single"><b>₹140</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Fried Rice">
+          <span class="dish-thumb"><img src="assets/dishes/fried-rice.jpg" alt="Fried Rice" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Fried Rice</span>
+          <span class="dish-prices"><span class="single"><b>₹160</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Paneer Matar Pulao">
+          <span class="dish-thumb"><img src="assets/dishes/paneer-matar-pulao.jpg" alt="Paneer Matar Pulao" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Paneer Matar Pulao</span>
+          <span class="dish-prices"><span class="single"><b>₹180</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Dal Chawal Fry">
+          <span class="dish-thumb"><img src="assets/dishes/dal-chawal-fry.jpg" alt="Dal Chawal Fry" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Dal Chawal Fry</span>
+          <span class="dish-prices"><span class="single"><b>₹120</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Chhole Chawal Fry">
+          <span class="dish-thumb"><img src="assets/dishes/chhole-chawal-fry.jpg" alt="Chhole Chawal Fry" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Chhole Chawal Fry</span>
+          <span class="dish-prices"><span class="single"><b>₹120</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Dal Makhani Rice">
+          <span class="dish-thumb"><img src="assets/dishes/dal-makhani-rice.jpg" alt="Dal Makhani Rice" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Dal Makhani Rice</span>
+          <span class="dish-prices"><span class="single"><b>₹140</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Tari Rice">
+          <span class="dish-thumb"><img src="assets/dishes/tari-rice.jpg" alt="Tari Rice" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Tari Rice</span>
+          <span class="dish-prices"><span class="single"><b>₹140</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Shahi Paneer Gravy Rice">
+          <span class="dish-thumb"><img src="assets/dishes/shahi-paneer-gravy-rice.jpg" alt="Shahi Paneer Gravy Rice" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Shahi Paneer Gravy Rice</span>
+          <span class="dish-prices"><span class="single"><b>₹140</b></span></span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- RAITA -->
+    <section id="raita" class="menu-section" aria-labelledby="raita-title">
+      <header class="section-header">
+        <span class="section-ornament" aria-hidden="true">❖</span>
+        <h2 id="raita-title" class="section-title"><span data-i18n="catRaita">Raita</span></h2>
+        <span class="section-rule" aria-hidden="true"></span>
+      </header>
+      <ul class="dish-list">
+        <li class="dish-row single-price" data-name="Boondi Raita">
+          <span class="dish-thumb"><img src="assets/dishes/boondi-raita.jpg" alt="Boondi Raita" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Boondi Raita</span>
+          <span class="dish-prices"><span class="single"><b>₹120</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Aloo Raita">
+          <span class="dish-thumb"><img src="assets/dishes/aloo-raita.jpg" alt="Aloo Raita" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Aloo Raita</span>
+          <span class="dish-prices"><span class="single"><b>₹120</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Tadka Raita">
+          <span class="dish-thumb"><img src="assets/dishes/tadka-raita.jpg" alt="Tadka Raita" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Tadka Raita</span>
+          <span class="dish-prices"><span class="single"><b>₹130</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Pyaaz Raita">
+          <span class="dish-thumb"><img src="assets/dishes/pyaaz-raita.jpg" alt="Pyaaz Raita" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Pyaaz Raita</span>
+          <span class="dish-prices"><span class="single"><b>₹120</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Mix Raita">
+          <span class="dish-thumb"><img src="assets/dishes/mix-raita.jpg" alt="Mix Raita" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Mix Raita</span>
+          <span class="dish-prices"><span class="single"><b>₹140</b></span></span>
+        </li>
+        <li class="dish-row single-price" data-name="Plain Dahi">
+          <span class="dish-thumb"><img src="assets/dishes/plain-dahi.jpg" alt="Plain Dahi" loading="lazy" width="56" height="56" onerror="this.parentNode.classList.add('img-missing');this.remove();" /><span class="thumb-fallback" aria-hidden="true">❖</span></span>
+          <span class="dish-name">Plain Dahi</span>
+          <span class="dish-prices"><span class="single"><b>₹50</b></span></span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <section class="contact-section" aria-label="Contact and social links">
+    <div class="section-header section-header-center">
+      <span class="section-ornament" aria-hidden="true">❖</span>
+      <h2 class="contact-title" data-i18n="connectWithUs">Connect with us</h2>
+      <span class="section-ornament" aria-hidden="true">❖</span>
+    </div>
+    <div class="contact-actions">
+      <a class="action-btn instagram" href="https://www.instagram.com/aunty_ki_rasoi_chandausi/" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.2 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.2 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.2-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.2-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.2.8-.4.3-.6.7-.8 1.2-.2.4-.3 1-.4 2.1-.1 1.2-.1 1.6-.1 4.7s0 3.5.1 4.7c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.2.3.4.7.6 1.2.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.2-.8.4-.3.6-.7.8-1.2.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.2-.3-.4-.7-.6-1.2-.8-.4-.2-1-.3-2.1-.4-1.2-.1-1.6-.1-4.7-.1zm0 3.1a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 8.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm6.4-8.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
+        <span data-i18n="instagram">Instagram</span>
+      </a>
+      <a class="action-btn call" href="tel:YOUR_PHONE_NUMBER_HERE">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1l-2.3 2.3z"/></svg>
+        <span data-i18n="call">Call</span>
+      </a>
+      <a class="action-btn maps" href="https://www.google.com/maps/place/%E0%A4%86%E0%A4%82%E0%A4%9F%E0%A5%80+%E0%A4%95%E0%A5%80+%E0%A4%B0%E0%A4%B8%E0%A5%8B%E0%A4%88/@28.4378723,78.7924924,17z/data=!3m1!4b1!4m6!3m5!1s0x390adb71ea4bb149:0x42dd7b9c8f512fa9!8m2!3d28.4378676!4d78.7950673!16s%2Fg%2F11rmsfyb8_?entry=ttu" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+        <span data-i18n="maps">Maps</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-ornament" aria-hidden="true">
+      <span class="orn-line"></span>
+      <span class="orn-diamond"></span>
+      <span class="orn-line"></span>
+    </div>
+    <p class="footer-brand">Aunty Ki Rasoi</p>
+    <p class="footer-tagline" data-i18n="tagline">Home Cooked Indian Food</p>
+    <p class="footer-note">&copy; <span id="year"></span> Aunty Ki Rasoi</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
